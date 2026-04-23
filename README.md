@@ -1,6 +1,7 @@
 ## Introduction
 
-This is the source code for Website about ***AI alignment***.
+This is the source code for Website (<https://cedanl.github.io/AI-Alignment/>) \
+about ***AI alignment***.
 
 The website is part of a project to support the Dutch Education community via CEDA. Its main aim is to stimulate conversation about comparing the alignment of AI models and systems against what we consider important.
 

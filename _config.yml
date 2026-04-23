@@ -1,10 +1,8 @@
 title: "AI Alignment"
 description: "The AI Alignment project under CEDA is an incrementally evolving body of work about keeping track and comparing AI models and systems against our values."
 
-theme: "just-the-docs"
-
-just_the_docs:
-  search_enabled: true
-  search_tokenizer_separator: /[\s/]+/
-  color_scheme: light
-
+remote_theme: just-the-docs/just-the-docs
+color_scheme: light
+search_enabled: true
+search:
+  tokenizer_separator: /[\s/]+/
