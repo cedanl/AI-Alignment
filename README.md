@@ -1,6 +1,14 @@
+## Introduction
+
 This is the source code for Website about ***AI alignment***.
 
 The website is part of a project to support the Dutch Education community via CEDA. Its main aim is to stimulate conversation about comparing the alignment of AI models and systems against what we consider important.
+
+## Dashboards.
+
+1.  [Information Dashboard](Dashboard/info_benchmarks.html) - An information dashboard about AI Alignment. The menu option [Scorecard/Visualization](Dashboard/info_benchmarks.html#visualization) is a mockup of a potential community process.
+
+## Context
 
 At the end of 2025 the [Npuls LA team](https://community-data-ai.npuls.nl/groups/view/1590660d-2a58-4210-8842-c65953a0ac10/project-best-worst-practices-learning-analytics) came to the following conclusion about the state of Generative AI in Dutch education:
 

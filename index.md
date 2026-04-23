@@ -1,3 +1,8 @@
+---
+layout: default
+title: AI Alignment Scorecards
+---
+
 # AI Alignment Scorecards
 
 ## Introduction
@@ -8,4 +13,4 @@ Benchmarks are essential for evaluating the performance, safety, and ethical imp
 
 ## Dashboards.
 
-1. [Information Dashboard](Dashboard/info_benchmarks.html) - An information dashboard about AI Alignment. The menu option [Scorecard/Visualization](Dashboard/info_benchmarks.html#visualization) is a mockup of a potential community process.
+1.  [Information Dashboard](Dashboard/info_benchmarks.html) - An information dashboard about AI Alignment. The menu option [Scorecard/Visualization](Dashboard/info_benchmarks.html#visualization) is a mockup of a potential community process.
