@@ -501,17 +501,16 @@ Choose AI models based on our values is possible via a set of current benchmarks
 
 ***It is Nuanced:***
 
-* Not all benchmarks are created equal
-* Different domains have different capability needs
-* Some benchmarks are more accessible than others
-* We might to run our own benchmarks for missing models
-* it is only an estimate, but the more high quality (and popular) benchmarks the more reliable the estimate.
-* There are many variations of models (Size, fine tuning, etc.) and the benchmarks only capture a subset of these variations.
-* Fine tuning can improve models for our specific tasks so we will have more models to test in the future.
-* Benchmarks become less reliable over time due to Saturation effects such as models being trained on benchmark data.
 
-Therefore, AI alignment requires a nuanced understanding of the details to be enacted safely. However,the pay off is great.
+* Not all benchmarks are created equal.
+* Different domains have different capability needs.
+* Some benchmarks are more accessible than others.
+* We might run our own benchmarks for missing models.
+* It is only an estimate, but the higher (and more popular) the benchmarks, the more reliable the estimate.
+* There are many model variations (Size, fine-tuning, etc.), and the benchmarks capture only a subset of them.
+* Fine-tuning can improve models for our specific tasks, so we will have more models to test in the future.
+* Benchmarks become less reliable over time due to Saturation effects such as models trained on benchmark data.
 
-> We do need a community process to agree what are values are and make sure they are covered by the benchmarks.
+> AI alignment requires a nuanced understanding of the details for us to enact safely. However, the payoff is great.
 
-Here is a [mockup of the dashboard](https://cedanl.github.io/AI-Alignment/Dashboard/info_benchmarks.html#visualization) that supports this process.
+We do need a community process. Here is a [mockup of the dashboard](https://cedanl.github.io/AI-Alignment/Dashboard/info_benchmarks.html#visualization) that supports such a process.
