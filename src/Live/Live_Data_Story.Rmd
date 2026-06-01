@@ -1,0 +1,475 @@
+---
+title: "AI Aligned by Benchmarking"
+#author: "Educational Data Competence Center"
+#date: "Published: `r Sys.Date()`"
+output:
+  flexdashboard::flex_dashboard:
+    storyboard: true
+    storyboard_options:
+      transition: fade
+      duration: 5000
+    theme:
+      version: 5
+      bootswatch: flatly
+      primary: "#2C3E50"
+      secondary: "#18BC9C"
+      base_font: !expr bslib::font_google("Inter")
+      heading_font: !expr bslib::font_google("Montserrat")
+    code_folding: hide
+    self_contained: true
+    social: ["linkedin"]
+    navbar:
+      - { icon: "fa-envelope", href: "mailto:a.m.berg@uval.nl", align: right, title: "Contact" }
+      - { icon: "fa-external-link-alt", href: "https://community-data-ai.npuls.nl/groups/view/44d20066-53a8-48c2-b4e9-be348e05d273/project-educational-data-compentence-center", align: right, title: "CEDA" }
+---
+```{r setup, echo=FALSE, warning=FALSE, message=FALSE}
+# Setup chunk — runs before every panel renders.
+#
+# All stop() calls here cause knitr to abort rendering immediately with a
+# clear error message.  This is intentional: a dashboard with blank panels
+# is harder to diagnose than a render that fails loudly.
+# Individual panel failures are handled by show_error() further below.
+
+suppressPackageStartupMessages({
+  library(ggplot2)
+  library(plotly)
+  library(ggthemes)
+  library(ggiraph)
+  library(knitr)
+  library(kableExtra)
+  library(htmltools)
+  library(logger)
+})
+
+log_threshold(INFO)
+
+# --- Environment validation -----------------------------------------------
+
+data_dir <- Sys.getenv("DATA_DIR")
+
+if (nchar(data_dir) == 0) {
+  stop(
+    "DATA_DIR is not set. ",
+    "Set it to the directory produced by Gather.R and Explore_Benchmarks.R."
+  )
+}
+
+results_path <- file.path(data_dir, "artificial_results.Rdata")
+
+# Check file existence before load() so the error message names the missing
+# path rather than showing a generic "cannot open connection" message.
+if (!file.exists(results_path)) {
+  stop(sprintf(
+    paste0(
+      "Results file not found: %s\n",
+      "Run Explore_Benchmarks.R to generate it."
+    ),
+    results_path
+  ))
+}
+
+# load() itself can fail if the file is corrupt or written by an
+# incompatible R version.  Wrap it so the message identifies the path.
+tryCatch(
+  load(results_path),
+  error = function(e) {
+    stop(sprintf(
+      "Failed to load %s: %s", results_path, conditionMessage(e)
+    ))
+  }
+)
+
+log_info(sprintf(
+  "Loaded %d result(s) from %s", length(results), results_path
+))
+
+# --- Helper: styled error card --------------------------------------------
+
+# show_error returns an htmltools div that knitr renders as HTML in any
+# chunk type.  Use it when a panel's data is missing or a render fails,
+# so the panel shows an informative message instead of a blank space.
+show_error <- function(title, detail = NULL) {
+  div(
+    style = paste0(
+      "color:#721c24;",
+      "background-color:#f8d7da;",
+      "border:1px solid #f5c6cb;",
+      "padding:16px 20px;",
+      "border-radius:4px;",
+      "margin:20px auto;",
+      "max-width:640px;"
+    ),
+    strong(paste0("⚠  ", title)),
+    if (!is.null(detail)) p(
+      style = "margin-top:8px; margin-bottom:0;",
+      detail
+    )
+  )
+}
+
+# --- Helper: safe results accessor ----------------------------------------
+
+# get_result fetches a key from the results list and returns NULL with a
+# warning if absent.  Callers check for NULL and call show_error() rather
+# than indexing results directly, which would silently return NULL without
+# any log output.
+get_result <- function(key) {
+  if (!key %in% names(results)) {
+    log_warn(sprintf("Result key not found: '%s'", key))
+    return(NULL)
+  }
+  results[[key]]
+}
+```
+
+```{css, echo=FALSE}
+.chart-stage .html-widget {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+}
+```
+
+### <i class="fa fa-home"></i>  INTRODUCTION
+
+<!-- Define the text container with a unique ID -->
+<div id="section-text">
+#### Narrative
+
+This dashboard shows that it is practical to collect live benchmark data and provides visual intuition into the value of this data for model selection. By the end of the story, we conclude that AI alignment through benchmark comparisons is operationalizable and requires a nuanced understanding of the details to be enacted safely. The dashboard then points to a second dashboard that explains some nuances and provides a mockup of a potential community practice.
+
+The live data sources were gathered from the sources acknowledged below. Through their efforts, this dashboard was made viable.
+</div>
+
+
+
+<!-- JavaScript Engine -->
+<script>
+function speakText() {
+  // 1. Grab the clean text content from your target div
+  var textToSpeak = document.getElementById("section-text").innerText;
+
+  // 2. Initialize the system voice synthesizer
+  var utterance = new SpeechSynthesisUtterance(textToSpeak);
+
+  // 3. (Optional) Fine-tune voice speed and pitch
+  utterance.rate = 1.0;  // Speed: 0.1 to 10
+  utterance.pitch = 1.0; // Pitch: 0 to 2
+
+  // 4. Trigger audio broadcast
+  window.speechSynthesis.speak(utterance);
+}
+</script>
+
+
+#### Acknowledgements
+
+The live datasets are gathered from the following sources:
+
+1. ***[Artificial.AI](https://artificialanalysis.ai/):*** Artificial Analysis performs intelligence, quality, performance and price benchmarking on AI models, inference API endpoints and systems. This section of our website describes our benchmarking methodology, including both our quality benchmarking and performance benchmarking.
+2. ***[/oolong-tea-2026](https://github.com/oolong-tea-2026/arena-ai-leaderboards):***  Auto-updated daily snapshots of every Arena AI (formerly LMSYS Chatbot Arena) leaderboard in structured JSON.
+3. ***[Epoch](https://epoch.ai/):*** Investigating the trajectory of AI for the benefit of society.
+
+****
+
+<!-- Add the interactive playback button -->
+<button onclick="speakText()" style="background-color: #2C3E50; color: white; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer; margin-top: 10px;">
+  <i class="fa fa-volume-up"></i> Read Aloud
+</button>
+
+### <i class="fa fa-globe"></i> ***1 a:*** Coverage
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, results='asis'}
+# Displays the Creators Count plotly bar chart from Artificial Analysis.
+# get_result() returns NULL when Explore_Benchmarks.R did not produce this
+# chart; show_error() renders a visible card in place of the blank widget.
+tryCatch({
+  obj <- get_result("Artificial: Graphics - Creators Count")
+  if (is.null(obj)) {
+    show_error(
+      "Creators Count chart unavailable",
+      paste0(
+        "This chart was not produced by Explore_Benchmarks.R. ",
+        "Check that artificial.Rdata exists in DATA_DIR."
+      )
+    )
+  } else {
+    obj
+  }
+},
+error = function(e) {
+  # Catches unexpected render errors (e.g. plotly version mismatch).
+  show_error("Render error — Creators Count", conditionMessage(e))
+})
+```
+
+***
+Artificial Analysis (https://artificialanalysis.ai) provides its gathered benchmarks for free through a REST API. Their coverage spans a range of benchmarks (around 10) based on their own AGI benchmark. Artificial Analysis also provides a detailed dashboard that you may consider interacting with in your own research.
+
+> The graph is dynamic. Hovering over a point will display a bar with further information.
+
+###  <i class="fa fa-tachometer-alt"></i> ***1 b:*** Best models
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+# Displays a kable table of the top-ranked model per benchmark.
+# The data frame is filtered to rank == 1 and reformatted for display.
+# If the data frame is missing or malformed, show_error() is displayed.
+tryCatch({
+  df_results <- get_result("Artificial: Dataframe - All benchmarks")
+
+  if (is.null(df_results)) {
+    show_error(
+      "Best models table unavailable",
+      paste0(
+        "The benchmarks data frame was not produced by Explore_Benchmarks.R. ",
+        "Check that artificial.Rdata exists in DATA_DIR."
+      )
+    )
+  } else {
+    df_display <- df_results[
+      df_results$rank == 1,
+      c("model", "TAGS", "Name", "Description", "URL")
+    ]
+    # Embed the source URL as a hyperlink inside the Description cell so
+    # the URL column itself can be dropped from the visible table.
+    df_display$Description <- paste0(
+      "<a href='", df_display$URL, "' target='_blank'>Link</a>  ",
+      df_display$Description
+    )
+    df_display          <- df_display[order(df_display$TAGS), ]
+    df_display$URL      <- NULL
+    names(df_display)   <- c("Model", "Domain", "Benchmark", "Details")
+
+    df_display |>
+      kable(format = "html", escape = FALSE) |>
+      kable_styling(
+        bootstrap_options = c("striped", "hover", "autofit"),
+        font_size = 12
+      ) |>
+      column_spec(1, bold = TRUE, color = "#8B0000") |>
+      column_spec(2, bold = TRUE, color = "#000000") |>
+      row_spec(0, bold = TRUE, color = "#00008B")
+  }
+},
+error = function(e) {
+  show_error("Render error — Best models table", conditionMessage(e))
+})
+```
+
+***
+
+> This table shows the best performing models across all benchmarks.
+
+
+
+### <i class="fa fa-balance-scale"></i> ***1 c:*** Finding the balance
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+# Displays the HLE Score vs Price girafe scatter, sized to 70% of the panel.
+# girafe_options applies responsive sizing; the outer div centres the widget.
+tryCatch({
+  obj <- get_result("Artificial: Graphics - Benchmark Example")
+
+  if (is.null(obj)) {
+    show_error(
+      "HLE scatter unavailable",
+      paste0(
+        "The HLE vs Price chart was not produced by Explore_Benchmarks.R. ",
+        "Check that artificial.Rdata exists in DATA_DIR."
+      )
+    )
+  } else {
+    pt <- girafe_options(obj, opts_sizing(rescale = TRUE, width = 0.7))
+
+    div(
+      style = paste0(
+        "width:70%; height:70%;",
+        "display:flex; align-items:center; justify-content:center;"
+      ),
+      pt
+    )
+  }
+},
+error = function(e) {
+  show_error("Render error — HLE scatter", conditionMessage(e))
+})
+```
+
+***
+> You can see that some models perform well on the benchmark at considerably less cost than the best performing model.
+
+### <i class="fa fa-globe"></i> ***1 d:*** Exploring
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, results='asis'}
+# Displays the normalised all-benchmarks girafe scatter, sized to 70%.
+# results='asis' is required here so the girafe widget is emitted as raw
+# HTML rather than wrapped in markdown code fences.
+tryCatch({
+  obj <- get_result("Artificial: Graphic - All benchmarks")
+
+  if (is.null(obj)) {
+    show_error(
+      "All Benchmarks chart unavailable",
+      paste0(
+        "The normalised benchmarks chart was not produced by ",
+        "Explore_Benchmarks.R. Check that artificial.Rdata exists in DATA_DIR."
+      )
+    )
+  } else {
+    pt2 <- girafe_options(obj, opts_sizing(rescale = TRUE, width = 0.7))
+
+    div(
+      style = paste0(
+        "width:70%; height:70%;",
+        "display:flex; align-items:center; justify-content:center;"
+      ),
+      pt2
+    )
+  }
+},
+error = function(e) {
+  show_error("Render error — All Benchmarks chart", conditionMessage(e))
+})
+```
+
+***
+Lots of actionable information on one graph.
+
+> Click on a point to reveal the model name and benchmark. The click also fixs all the datpoints for a given benchmark in focus. Click again to reset the view.
+
+### <i class="fa fa-user-check"></i>  ***2 a:*** Human Judgement
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+# Displays the Oolong arena leaderboard summary as a kable table.
+# Arena names are hyperlinked to their source URLs before the url column
+# is dropped from the visible table.
+tryCatch({
+  boards <- get_result("OOland: Dataframe - benchmarks")
+
+  if (is.null(boards)) {
+    show_error(
+      "Human Judgement table unavailable",
+      paste0(
+        "The arena leaderboard data frame was not produced by ",
+        "Explore_Benchmarks.R. Check that oolong.Rdata exists in DATA_DIR."
+      )
+    )
+  } else {
+    boards$Arena <- paste0(
+      "<a href='", boards$url, "' target='_blank'>", boards$Arena, "</a>"
+    )
+    boards$url <- NULL
+
+    boards |>
+      kable(format = "html", escape = FALSE) |>
+      kable_styling(bootstrap_options = c("striped", "hover", "autofit"))
+  }
+},
+error = function(e) {
+  show_error("Render error — Human Judgement table", conditionMessage(e))
+})
+```
+
+***
+
+> Arena's allow humans to choose (online) between different models on a given task. The table shows the results of a human judgement benchmarks.
+
+
+### <i class="fa fa-trophy"></i>  ***2 b:*** Ranking
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+# Displays the Oolong Arena Board girafe scatter, sized to 70% of the panel.
+tryCatch({
+  obj <- get_result("OOlang: Graphic - Arena Board")
+
+  if (is.null(obj)) {
+    show_error(
+      "Arena Board chart unavailable",
+      paste0(
+        "The arena ranking chart was not produced by Explore_Benchmarks.R. ",
+        "Check that oolong.Rdata exists in DATA_DIR."
+      )
+    )
+  } else {
+    pt3 <- girafe_options(obj, opts_sizing(rescale = TRUE, width = 0.7))
+
+    div(
+      style = paste0(
+        "width:70%; height:70%;",
+        "display:flex; align-items:center; justify-content:center;"
+      ),
+      pt3
+    )
+  }
+},
+error = function(e) {
+  show_error("Render error — Arena Board chart", conditionMessage(e))
+})
+```
+
+
+***
+
+> Opensource models are ranked on a leaderboard based on human judgements. Some of the Open Source models are near the top of the leaderboard and might be useful once we take into account the need for Digital Sovereignty or keeping your data within your own data center.
+
+
+### <i class="fa fa-info-circle"></i> ***3 a:*** More information
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+# Displays the Epoch AI best-model-per-benchmark summary as a kable table.
+# Rows with an empty Model.version are filtered out before display.
+tryCatch({
+  epoch_df <- get_result("Epoch: Dataframe - Best Model")
+
+  if (is.null(epoch_df)) {
+    show_error(
+      "Epoch table unavailable",
+      paste0(
+        "The Epoch best-model data frame was not produced by ",
+        "Explore_Benchmarks.R. Check that epoch.Rdata exists in DATA_DIR."
+      )
+    )
+  } else {
+    # Filter and sort here rather than in Explore_Benchmarks.R so that
+    # the full data frame is preserved in results for other potential uses.
+    epoch_display <- epoch_df[epoch_df$Model.version != "", ]
+    epoch_display <- epoch_display[order(epoch_display$Model.version), ]
+
+    epoch_display |>
+      kable(format = "html", escape = FALSE) |>
+      kable_styling(bootstrap_options = c("striped", "hover", "autofit"))
+  }
+},
+error = function(e) {
+  show_error("Render error — Epoch table", conditionMessage(e))
+})
+```
+
+
+***
+
+Here a list of best models for a given benchmark is shown. The dataset is from Epoch.AI. The dataset is updated regularly.
+
+> Certain models are robust across a series of benchmarks and therefore specific capabilities.
+
+
+### <i class="fa fa-file-signature"></i> Conclusions
+
+Choose AI models based on our values is possible via a set of current benchmarks. Much of the necessary benchmarks are available, but ...
+
+***It is Nuanced:***
+
+* Not all benchmarks are created equal
+* Different domains have different capability needs
+* Some benchmarks are more accessible than others
+* We might to run our own benchmarks for missing models
+* it is only an estimate, but the more high quality (and popular) benchmarks the more reliable the estimate.
+* There are many variations of models (Size, fine tuning, etc.) and the benchmarks only capture a subset of these variations.
+* Fine tuning can improve models for our specific tasks so we will have more models to test in the future.
+* Benchmarks become less reliable over time due to Saturation effects such as models being trained on benchmark data.
+
+Therefore, AI alignment requires a nuanced understanding of the details to be enacted safely. However,the pay off is great.
+
+> We do need a community process to agree what are values are and make sure they are covered by the benchmarks.
+
+Here is a [mockup of the dashboard](https://cedanl.github.io/AI-Alignment/Dashboard/info_benchmarks.html#visualization) that supports this process.
