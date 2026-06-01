@@ -686,6 +686,63 @@ error = function(e) {
   ))
 })
 
+
+# ---------------------------------------------------------------------------
+# Section x: Cisco Safety
+# ---------------------------------------------------------------------------
+
+tryCatch({
+  load(paste0(data_dir, "cisco.Rdata"))
+  
+  # Sort by combined score and assign rank for tooltip display.
+  cisco_sorted_df <- cisco_df |>
+    arrange(-data.combined_score) |> 
+    mutate(rank = row_number())
+  
+  # Build a ggplot scatter plot of combined score vs rank, colored by source type.
+  p <- ggplot(
+    cisco_sorted_df,
+    aes(y = `data.combined_score`, x = rank, color = `data.source_type`)
+  ) +
+    geom_point_interactive(
+      aes(
+        tooltip = paste0(
+          "Model: ", `data.model`,
+          "\nScore: ", `data.combined_score`,
+          "\nLicense: ", `data.source_type`
+        ),
+        data_id = `data.source_type`
+      ),
+      size = 2
+    ) +
+    theme_solarized_2() +
+    labs(
+      title    = paste0("Cisco Safety "),
+      subtitle = "",
+      x = "Rank", 
+      y = "Combined Score")
+  
+  # Convert the ggplot to an interactive girafe object with hover and zoom options.
+  # Save the resulting interactive plot in the results list under a descriptive name.
+  results[["Cisco: Graphic - Safety"]]  <-
+    girafe(
+      ggobj   = p,
+      options = list(
+        opts_hover(css = "fill:orange;stroke:black;cursor:pointer;"),
+        opts_zoom(max = 5),
+        opts_toolbar(position = "topright"),
+        opts_sizing(rescale = TRUE) 
+      )
+    )
+  
+  log_info("Built: Cisco Safety chart")
+},
+error = function(e) {
+  log_error(sprintf(
+    "Cisco Safety chart failed (non-fatal): %s", conditionMessage(e)
+  ))
+})
+
 # ---------------------------------------------------------------------------
 # Save results
 # ---------------------------------------------------------------------------
@@ -709,3 +766,4 @@ tryCatch(
 )
 
 log_info("Explore complete.")
+

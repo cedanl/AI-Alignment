@@ -413,6 +413,48 @@ error = function(e) {
 > Opensource models are ranked on a leaderboard based on human judgements. Some of the Open Source models are near the top of the leaderboard and might be useful once we take into account the need for Digital Sovereignty or keeping your data within your own data center.
 
 
+### <i class="fa fa-trophy"></i>  ***2 b:*** Ranking Safety
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+# Displays the Oolong Arena Board girafe scatter, sized to 70% of the panel.
+tryCatch({
+  obj <- get_result("Cisco: Graphic - Safety")
+
+  if (is.null(obj)) {
+    show_error(
+      "Cisco safety benchmark unavailable",
+      paste0(
+        "Cisco: Graphic - Safety was not produced by Explore_Benchmarks.R. ",
+        "Check that cisco.Rdata exists in DATA_DIR."
+      )
+    )
+  } else {
+    pt4 <- girafe_options(obj, opts_sizing(rescale = TRUE, width = 0.7))
+
+    div(
+      style = paste0(
+        "width:70%; height:70%;",
+        "display:flex; align-items:center; justify-content:center;"
+      ),
+      pt4
+    )
+  }
+},
+error = function(e) {
+  show_error("Render error — Cisco Safety ranking", conditionMessage(e))
+})
+```
+
+***
+
+***CISCO LLM Security Leadership board***
+
+Comprehensive model safety and security rankings, including single-turn score, multi-turn score, and detailed metrics.
+
+[See](https://leaderboard.aidefense.cisco.com/rankings)
+
+
+
 ### <i class="fa fa-info-circle"></i> ***3 a:*** More information
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
