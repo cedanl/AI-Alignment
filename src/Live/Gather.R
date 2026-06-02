@@ -8,6 +8,7 @@
 # Optional env vars: HUGGING_READ
 # Depends on: logger (install via pak::pak("logger"))
 
+
 suppressPackageStartupMessages({
   library(httr2)
   library(jsonlite)
@@ -397,4 +398,107 @@ if (nchar(hugging_key) > 0L) {
   )
 }
 
-log_info("Gather complete.")
+
+# ---------------------------------------------------------------------------
+# Source : LMM-STATS
+# ---------------------------------------------------------------------------
+
+tryCatch({
+  log_info("Fetching LLM-STATS data...")
+  timestamp_llm_stats <- Sys.Date()
+  
+  limit    <- 50
+  days     <- 60
+  api_key  <- Sys.getenv("LLM_STATS")
+
+  
+  # Ensure the data directory path ends with a slash safely
+  if (data_dir != "" && !endsWith(data_dir, "/")) {
+    data_dir <- paste0(data_dir, "/")
+  }
+  
+  # --- 1. Fetch Rankings ---
+  log_info("Requesting ranking data...")
+  response <- request("https://api.zeroeval.com/stats/v1/rankings") |>
+    req_url_query(category = "coding", limit = limit) |>
+    req_auth_bearer_token(api_key) |>
+    req_retry(max_tries = 1) |> # Automatically handles temporary network issues/rate limits
+    req_error(is_error = function(resp) FALSE) |> # Prevents httr2 from throwing an unhandled R error immediately
+    req_perform()
+  
+  if (resp_is_error(response)) {
+    stop(sprintf("Rankings API HTTP Error %s", resp_status(response)))
+  }
+  data_ranking <- resp_body_json(response)
+  
+  # --- 2. Fetch Updates ---
+  log_info("Requesting updates data...")
+  response_updates <- request("https://api.zeroeval.com/stats/v1/updates") |>
+    req_url_query(days = 16, limit = 10) |>
+    req_auth_bearer_token(api_key) |>
+    req_retry(max_tries = 1) |> 
+    req_error(is_error = function(resp) FALSE) |> 
+    req_perform()
+  
+  if (resp_is_error(response_updates)) {
+    stop(sprintf("Updates API HTTP Error %s", resp_status(response_updates)))
+  }
+  data_updates <- resp_body_json(response_updates)
+  
+  
+  # Create and execute the request
+  #  Max limit and number of days. Needs experimentation to find optimal values
+  response_updates <- request("https://api.zeroeval.com/stats/v1/updates") |>
+    req_url_query(days = 16, limit = 10) |>
+    req_auth_bearer_token(api_key) |>
+    req_perform()
+  
+  data_updates <- resp_body_json(response_updates)
+  
+  
+  
+  # Extract and combine in one step
+  models_updated_df <- map_df(data_updates[["models"]], function(model) {
+    tibble(
+      id          = model[["id"]],
+      org         = model[["organization"]][["name"]],
+      open_weight = model[["open_weight"]],
+      added_at    = model[["added_at"]],
+      source      = model[["source"]],
+      url         = model[["url"]]
+    )
+  })
+  
+  
+  # Extract and combine in one step
+  models_rank_df <- map_df(data_ranking[["models"]], function(model) {
+    tibble(
+      model_name  = model[["model_name"]],
+      org         = model[["organization"]],
+      score       = model[["score"]],
+      min_input_price = model[["min_input_price"]],
+      open_weight = model[["open_weight"]],
+      benchmarks_evaluated = model[["benchmarks_evaluated"]],
+      source      = model[["source"]],
+      url         = model[["url"]]
+    )
+  })
+  
+ 
+  if (nrow(models_updated_df) > 0) {
+    models_updated_df$added_at <- as.POSIXct(
+      models_updated_df$added_at, 
+      format = "%Y-%m-%dT%H:%M:%OS", 
+      tz = "UTC"
+    )
+  }
+  
+  
+  # --- 5. Save Results ---
+  save_path <- paste0(data_dir, "llm_stats.Rdata")
+  save(timestamp_llm_stats, models_rank_df, models_updated_df, file = save_path, compress = TRUE)
+  log_info(sprintf("Successfully saved data to %s", save_path))
+  
+}, error = function(e) { 
+  log_error(sprintf("LLM-STAT (non-fatal): %s", conditionMessage(e)))
+})
