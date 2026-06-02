@@ -212,10 +212,7 @@ tryCatch({
 
     bench_url[1] <- paste0(
       "https://artificialanalysis.ai/evaluations/",
-      "artificial-analysis-intelligence-index,",
-      "https://artificialanalysis.ai/evaluations,",
-      "https://artificialanalysis.ai/methodology/",
-      "intelligence-benchmarking#aa-lcr"
+      "artificial-analysis-intelligence-index"
     )
     bench_description[1] <- paste0(
       "Artificial Analysis Intelligence Index combines performance",
@@ -744,6 +741,24 @@ error = function(e) {
 })
 
 # ---------------------------------------------------------------------------
+# LLM Stats
+# ---------------------------------------------------------------------------
+
+tryCatch({
+  log_info("Processing LLM Stats data...")
+  load(paste0(data_dir, "llm_stats.Rdata"))
+  results[["LLM_Stats: Dataframe - Ranking"]] <- models_rank_df
+  results[["LLM_Stats: Dataframe - Updates"]] <- models_updated_df
+},
+error = function(e) {
+  log_error(sprintf(
+    "Failed loading llm_stats (non-fatal): %s", conditionMessage(e)
+  ))
+})
+
+
+
+# ---------------------------------------------------------------------------
 # Save results
 # ---------------------------------------------------------------------------
 #
@@ -753,7 +768,7 @@ error = function(e) {
 # A write failure is fatal because the dashboard cannot render without it.
 
 log_info(sprintf("Saving %d result(s)...", length(results)))
-
+log_info("{names(results)}")
 tryCatch(
   save(
     results,

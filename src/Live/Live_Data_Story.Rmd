@@ -454,6 +454,45 @@ Comprehensive model safety and security rankings, including single-turn score, m
 [See](https://leaderboard.aidefense.cisco.com/rankings)
 
 
+### <i class="fa fa-directions"></i> ***2 c:*** Updating and Routing
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+tryCatch({
+  update_df <- get_result("LLM_Stats: Dataframe - Updates")
+  
+  if (is.null(update_df)) {
+    show_error(
+      "LLM-Stats update table unavailable",
+      paste0(
+        "LLM-Stats data frame was not produced by ",
+        "Explore_Benchmarks.R. Check that llm_stats.Rdata exists in DATA_DIR."
+      )
+    )
+  } else {
+    update_df$url <- paste0(
+      "<a href='",update_df$url , "' target='_blank'>",update_df$org , "</a>"
+    )
+    update_df$org <- NULL
+    update_df$source<-NULL
+
+    update_df |>
+      kable(format = "html", escape = FALSE) |>
+      kable_styling(bootstrap_options = c("striped", "hover", "autofit")) |>
+      column_spec(1, bold = TRUE, color = "#8B0000") |>
+      column_spec(2, bold = TRUE, color = "#000000") |>
+      row_spec(0, bold = TRUE, color = "#00008B")
+  }
+},
+error = function(e) {
+  show_error("Render error — LLM-stat updates table", conditionMessage(e))
+})
+```
+
+***
+
+[LLM-Stats](https://llm-stats.com/) provides a live feed of model updates, including newly added models to the ecosystem. We can use this type of information to keep our benchmarks up to date and to identify promising new models for testing.
+
+LLM-Stats also provides a routing service that automatically directs API calls to the best-performing model. We can use such a service to ensure that we always use the near best available model for specific capabilities. For a more complex community scorecard, it would require a discussion with a provider of routing services.
 
 ### <i class="fa fa-info-circle"></i> ***3 a:*** More information
 
@@ -500,7 +539,6 @@ Here a list of best models for a given benchmark is shown. The dataset is from E
 Choose AI models based on our values is possible via a set of current benchmarks. Much of the necessary benchmarks are available, but ...
 
 ***It is Nuanced:***
-
 
 * Not all benchmarks are created equal.
 * Different domains have different capability needs.
