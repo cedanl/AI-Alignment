@@ -502,3 +502,45 @@ tryCatch({
 }, error = function(e) { 
   log_error(sprintf("LLM-STAT (non-fatal): %s", conditionMessage(e)))
 })
+
+
+
+# ---------------------------------------------------------------------------
+# Source : Open Router
+# ---------------------------------------------------------------------------
+
+tryCatch({
+  log_info("Fetching Openrouter data...")
+  req <- request("https://openrouter.ai/api/v1/models")
+  # Perform the GET request
+  resp <- req_perform(req)
+  
+  # Check for successful response
+  if (resp_status(resp) != 200) {
+    stop(sprintf("openrouter API HTTP Error %s", resp_status(response)))
+  }
+  
+  # Parse JSON body to a list
+  data_list <- resp_body_json(resp, simplifyVector = TRUE)
+  
+  # Extract the models data frame
+  openrouter_df <- data_list$data
+  
+  # Save Results ---
+  save_path <- paste0(data_dir, "Open_Router.Rdata")
+  save(openrouter_df, file = save_path, compress = TRUE)
+  log_info(sprintf("Successfully saved data to %s", save_path))
+  
+}, error = function(e) {
+  log_error(sprintf("Openrouter (non-fatal): %s", conditionMessage(e)))
+})
+
+
+
+
+
+
+
+
+
+
