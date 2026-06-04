@@ -758,6 +758,90 @@ error = function(e) {
 
 
 
+
+# ---------------------------------------------------------------------------
+# OpenRouter
+# ---------------------------------------------------------------------------
+
+
+log_info("Processing Openrouter data...")
+
+tryCatch({
+  log_info("Loading openroute data")
+  load(file.path(data_dir,  "Open_Router.Rdata"))  
+
+arc_df <- openrouter_df$architecture
+arc_df <- arc_df %>%
+  mutate(output = map_chr(output_modalities, ~ paste(.x, collapse = ",")),
+         input = map_chr(input_modalities, ~ paste(.x, collapse = ",")))
+
+arc_counts_df <- arc_df |>
+  count(output, input) 
+
+
+generate_stylish_matrix <- function(data_df, 
+                                    base_font_size = 12, 
+                                    low_color = "#F4F6F7", 
+                                    high_color = "#2E86C1", 
+                                    text_color = "#2C3E50") {
+  
+  # 1. Build the stylized ggplot base
+  gg_plot <- ggplot(data_df, aes(x = input, y = output, fill = n)) +
+    # Render tiles that will stretch to fill available canvas space
+    geom_tile(aes(fill = n), color = "white", linewidth = 1.5, linejoin = "round") +
+    
+    # Text labels with dynamic text coloring based on tile intensity
+    geom_text(aes(label = n, 
+                  color = stage(n, after_scale = ifelse(fill > (max(data_df$n) / 1.8), "white", text_color))), 
+              fontface = "bold", 
+              size = base_font_size * 0.35) + 
+    
+    # Elegant color gradient
+    scale_fill_gradient(low = low_color, high = high_color) +
+    
+    # Clean labels
+    labs(
+      title = "Input vs Output Modalities Matrix",
+      x = "Input Modality",
+      y = "Output Modality"
+    ) +
+    
+    # Page-optimized minimalist theme
+    theme_minimal(base_size = base_font_size) + 
+    theme(
+      plot.title = element_text(face = "bold", size = rel(1.3), hjust = 0.5, margin = margin(b = 15)),
+      axis.title.x = element_text(face = "bold", margin = margin(t = 10)),
+      axis.title.y = element_text(face = "bold", margin = margin(r = 10)),
+      
+      # Text adjustments for neat formatting
+      axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, color = "#4A5568"),
+      axis.text.y = element_text(color = "#4A5568"),
+      
+      panel.grid = element_blank(),
+      
+      # CRITICAL CHANGES FOR YOUR REQUEST:
+      legend.position = "none",             # Completely removes all legends
+      plot.margin = margin(20, 20, 20, 20)  # Generous margins to prevent clipping
+    ) +
+    
+    # REMOVED coord_fixed(). Replaced with coord_cartesian to allow boxes 
+    # to tall-stretch or wide-stretch according to the device's dimension limits.
+    coord_cartesian(expand = FALSE) 
+  
+  # 2. Dynamic conversion via ggplotify
+  ggplotify::as.ggplot(gg_plot)
+}
+
+log_info("Generating graphic for OpenRouter architecture modularity")
+results[["OpenRouter: Graphic - Modularity"]] <- generate_stylish_matrix(arc_counts_df, base_font_size = 14)
+
+},
+error = function(e) {
+  log_error(sprintf(
+    "Open router plotting failed (non-fatal): %s", conditionMessage(e)
+  ))
+})
+
 # ---------------------------------------------------------------------------
 # Save results
 # ---------------------------------------------------------------------------
@@ -769,6 +853,7 @@ error = function(e) {
 
 log_info(sprintf("Saving %d result(s)...", length(results)))
 log_info("{names(results)}")
+
 tryCatch(
   save(
     results,

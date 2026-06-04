@@ -39,6 +39,7 @@ suppressPackageStartupMessages({
   library(kableExtra)
   library(htmltools)
   library(logger)
+  library(ggplotify)
 })
 
 log_threshold(INFO)
@@ -533,6 +534,35 @@ Here a list of best models for a given benchmark is shown. The dataset is from E
 
 > Certain models are robust across a series of benchmarks and therefore specific capabilities.
 
+
+### <i class="fa fa-ear-listen"></i>  ***3 b:*** LLM input / Output
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+tryCatch({
+  obj <- get_result("OpenRouter: Graphic - Modularity")
+
+  if (is.null(obj)) {
+    show_error(
+      "Open router modularity graphic unavailable",
+      paste0(
+        "OpenRouter: Graphic - Modularity: Graphic - Safety was not produced by Explore_Benchmarks.R. ",
+      )
+    )
+  } else {
+    obj
+  }
+},
+error = function(e) {
+  show_error("Render error — Openrouter", conditionMessage(e))
+})
+```
+
+***
+
+[OpenRouter](https://openrouter.ai/data) operates one of the largest AI inference platforms in the world, generating an authoritative empirical dataset relied upon by government agencies, academic researchers, major industry analysts, and global media outlets.
+
+Here we use their dataset on the input and output modality of the models that they measure. For policymakers, by doing so, we can keep track of the expanding range of modalities and their popularity. This is an important consideration as you select benchmarks relevant to the LLMs in your organisation.
 
 ### <i class="fa fa-file-signature"></i> Conclusions
 
