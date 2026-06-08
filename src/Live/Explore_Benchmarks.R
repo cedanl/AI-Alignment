@@ -524,6 +524,8 @@ tryCatch({
 
   tryCatch({
     df_test <- dfs[[2]][["models"]]
+    df_test <- df_test[order(df_test$score, decreasing = TRUE), ]
+    df_test$rank <- 1:nrow(df_test)
 
     p <- ggplot(
       df_test,
@@ -547,7 +549,7 @@ tryCatch({
         title    = paste0("Arena Board: ", boards$Arena[1]),
         subtitle = subtitle
       )
-
+p
     results[["OOlang: Graphic - Arena Board"]] <- girafe(
       ggobj   = p,
       options = list(
