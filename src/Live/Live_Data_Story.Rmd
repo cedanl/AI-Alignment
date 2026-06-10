@@ -454,6 +454,11 @@ Comprehensive model safety and security rankings, including single-turn score, m
 
 [See](https://leaderboard.aidefense.cisco.com/rankings)
 
+Other available Security benchmarks:
+
+* [CVE=Benchmark](https://github.com/uiuc-kang-lab/cve-bench) Evaluating AI agents on real world web vulnerabilities and exploits collected from National Vulnerability Database. CVE-Bench includes 40 critical-severity Common Vulnerability and Exposures (CVE) with the reference automatic exploits available on requests.
+* [TOSSS](https://github.com/MarcT0K/TOSSS-LLM-Benchmark) A benchmark that measures the ability of LLMs to choose between secure and vulnerable code snippets. 
+
 
 ### <i class="fa fa-directions"></i> ***2 c:*** Updating and Routing
 
