@@ -200,15 +200,19 @@ tryCatch({
   # used by section 1d to join descriptions onto the evaluation scores.
   # The inner tryCatch isolates metadata build failures from the chart-
   # build step so that a description typo cannot break the normalised chart.
+  # 
+  # Fragile: If the benchmark names in df_all change, then descriptions are not maintainable and should be dropped from the final presentation layer.
 
   tryCatch({
     benchmarks <- names(df_all) |>
       str_subset("^evaluations\\.") |>
       str_remove("^evaluations\\.")
+    
+    n_bench <- length(benchmarks)
 
-    bench_url         <- character(15)
-    bench_description <- character(15)
-    bench_tags        <- character(15)
+    bench_url         <- character(n_bench)
+    bench_description <- character(n_bench)
+    bench_tags        <- character(n_bench)
 
     bench_url[1] <- paste0(
       "https://artificialanalysis.ai/evaluations/",
@@ -314,7 +318,20 @@ tryCatch({
       " in real-world domains."
     )
     bench_tags[15] <- "Agentic"
+    
+    bench_url[16]         <- bench_url[15]
+    bench_description[16] <- bench_description[15]
+    bench_tags[16]        <- bench_tags[15]
+    
+    bench_url[17]         <- bench_url[15]
+    bench_description[17] <- bench_description[15]
+    bench_tags[17]        <- bench_tags[15]
+  
+    bench_url[15]         <- bench_url[14]
+    bench_description[15] <- bench_description[14]
+    bench_tags[15]        <- bench_tags[14]
 
+    
     analytics_bench_df <- data.frame(
       Name        = benchmarks,
       Description = bench_description,
@@ -523,7 +540,8 @@ tryCatch({
   # --- Arena board chart --------------------------------------------------
 
   tryCatch({
-    df_test <- dfs[[2]][["models"]]
+    # Fragile: Need to review code if the structure of dfs changes in future Oolong releases.
+    df_test <- dfs[[3]][["models"]]
     df_test <- df_test[order(df_test$score, decreasing = TRUE), ]
     df_test$rank <- 1:nrow(df_test)
 
