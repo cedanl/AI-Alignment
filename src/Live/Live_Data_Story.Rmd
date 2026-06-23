@@ -512,6 +512,7 @@ tryCatch({
     show_error(
       "Epoch table unavailable",
       paste0(
+        "This error is due to changes in the structure of the live data. The dashboard coding will need to be regularly updated to reflect the changes in the live data or a more robust form of data managling will need to be implemented.",
         "The Epoch best-model data frame was not produced by ",
         "Explore_Benchmarks.R. Check that epoch.Rdata exists in DATA_DIR."
       )
