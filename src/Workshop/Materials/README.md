@@ -57,7 +57,6 @@
   }
 </style>
 
-<div class="readme-content">
 
 # Workshop Materials — AI Alignment
 
@@ -107,8 +106,6 @@ Each session should be tailored to the audience — from introductory overviews 
 </div>
 
 
-
-
 ## Contents
 
 <table class="contents-table">
@@ -142,10 +139,7 @@ Each session should be tailored to the audience — from introductory overviews 
 <p style="color: #555;"><em>Source .Rmd files can be opened and rendered in RStudio. Pre-rendered HTML and DOCX outputs are provided for immediate use.</em></p>
 
 
-
-
-
-## <span style="color: darkblue;">Dashboards</span>
+## Dashboards
 
 1.  [Live Benchmarks Dashboard](Dashboard/Live_Data_Story.html) - A dashboard that tracks the performance of AI models against various benchmarks.
 1.  [Information Dashboard](Dashboard/info_benchmarks.html) - An information dashboard about AI Alignment. The menu option [Scorecard/Visualization](Dashboard/info_benchmarks.html#visualization) is a mockup of a potential community process.
@@ -153,7 +147,7 @@ Each session should be tailored to the audience — from introductory overviews 
 
 
 
-## <span style="color: darkblue;">Acknowledgments</span>
+## Acknowledgments
 
 <div class="info-box">
 <strong>Acknowledgments</strong><br>
