@@ -1,0 +1,212 @@
+---
+title: "AI Alignment — Worksheet"
+subtitle: "Community Materials — Workshop Notes"
+author: "Dr. Alan Berg / CEDA"
+date: "`r Sys.Date()`"
+output:
+  word_document:
+    toc: true
+    toc_depth: 2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(flextable)
+library(dplyr)
+
+blank_tbl <- function(cols, n = 10, widths = NULL) {
+  out <- data.frame(matrix("", nrow = n, ncol = length(cols)), stringsAsFactors = FALSE)
+  colnames(out) <- cols
+  ft <- flextable(out) %>%
+    theme_booktabs() %>%
+    bold(part = "header") %>%
+    bg(part = "header", bg = "#7a9eb3") %>%
+    color(part = "header", color = "white") %>%
+    bg(part = "body", i = seq(1, n, 2), bg = "#f2f6f9") %>%
+    set_table_properties(layout = "autofit", width = 1)
+  if (!is.null(widths)) {
+    for (i in seq_along(widths)) {
+      ft <- width(ft, j = i, width = widths[i])
+    }
+  }
+  ft
+}
+```
+
+\newpage
+
+# Searching for relevant information
+
+**Goal:** Build familiarity with the current literature landscape and the search methodology. Distribute papers across the group, prioritise them by relevance and quality, critique the search strategy, and iteratively refine the Boolean query.
+
+> **Precision and Recall in systematic reviews**
+>
+> Two fundamental metrics guide the iterative search process described in the exercises below.
+>
+> * **Recall** (sensitivity): the proportion of *all* relevant papers in the searched databases that the query successfully retrieves. High recall means few relevant papers are missed.
+>
+> * **Precision**: the proportion of retrieved papers that are *actually* relevant to the research question. High precision means less irrelevant noise to screen through.
+>
+> These two metrics trade off against each other — a broader query improves recall but reduces precision, and vice versa. The iterative refinement in Steps 5–8 below aims to find the right balance for your research question.
+
+---
+
+## Step 1: Distribute papers
+
+Assign each paper from the Background section to a group member whose domain expertise aligns best with the paper's topic. Consider both the rigour of the methodology and the paper's relevance to Dutch educational contexts. Which papers match your own expertise? Are there important topics where no one in the group has direct experience, and should an external expert be consulted?
+
+```{r step1, results='asis'}
+blank_tbl("Your notes", 10)
+```
+
+\newpage
+
+## Step 2: Select the best two papers
+
+Choose the two strongest papers and write a brief motivation for each. Consider: methodology quality (sample size, evaluation design, reproducibility), relevance to the Dutch education system, practical actionability, and novelty of the contribution. Would these papers serve as credible foundations for building a scorecard? What makes them stronger than the alternatives in the same topic area?
+
+```{r step2, results='asis'}
+blank_tbl(c("Paper selected", "Motivation"), 8, c(1.5, 4.5))
+```
+
+\newpage
+
+## Step 3: Search online for a stronger paper
+
+Use citation trails (both backward — references cited by a key paper — and forward — papers that cite it) and the databases listed in the Identification section to find a stronger paper on the same subject. What criteria define "stronger" in this context: more recent data, a larger study population, a different methodological approach, or greater relevance to the Dutch setting? Record the search path so others can reproduce it.
+
+```{r step3, results='asis'}
+blank_tbl(c("Search strategy", "Result"), 8, c(2.5, 3.5))
+```
+
+\newpage
+
+## Step 4: Read the PRISMA section
+
+Read the PRISMA methodology section in the main document carefully before refining your search. PRISMA provides a structured framework for systematic reviews that ensures transparency and reproducibility. Note any questions about the review process, the inclusion or exclusion criteria, or how the quality appraisal will be conducted. Understanding the methodology upfront will make the subsequent search refinement more targeted.
+
+```{r step4, results='asis'}
+blank_tbl("Your notes", 10)
+```
+
+\newpage
+
+## Step 5: Review and update the search query
+
+Look critically at the current Boolean search string. What terms are missing? Are there Dutch-language terms or local context keywords that should be added? Would a different combination of Boolean operators improve precision without sacrificing recall? Consider each of the four conceptual blocks (AI models, alignment/evaluation, education context, cross-cutting themes) separately, then test the combined effect.
+
+```{r step5, results='asis'}
+blank_tbl(c("Current gaps", "Suggested new terms"), 8, c(2.5, 3.5))
+```
+
+\newpage
+
+## Step 6: Execute the refined search
+
+Run the updated search string across all six listed databases. Note that each database may handle syntax differently — check for truncation symbols, wildcards, and field-code requirements (e.g., TITLE-ABS-KEY in Scopus). Record the number of results returned by each database so that recall can be compared across sources. If a database returns zero or an unexpectedly high number, troubleshoot before proceeding.
+
+```{r step6, results='asis'}
+blank_tbl(c("Database", "Results found", "Notes"), 6, c(1.5, 1.2, 3.3))
+```
+
+\newpage
+
+## Step 7: Record the number of papers
+
+Document the count at each stage of the PRISMA flow to track recall and precision over successive iterations. This record is essential for reproducibility and for measuring the impact of each query adjustment. If the drop between stages is unusually large, investigate whether the screening criteria are too strict or the search terms too broad.
+
+```{r step7, results='asis'}
+blank_tbl(c("Stage", "Count"), 8, c(3.5, 1.5))
+```
+
+\newpage
+
+## Step 8: Iterate from Step 5
+
+Adjust the Boolean string and repeat Steps 5–7 until the results converge on a manageable, relevant set. A good target for a systematic review is 50–300 records after deduplication, depending on the breadth of the research question. Document each iteration's changes and outcomes so the group can discuss which adjustments were most effective. Stop iterating when two consecutive rounds produce minimal change in the result set.
+
+```{r step8, results='asis'}
+blank_tbl(c("Iteration", "Change made", "Before", "After"), 6, c(1, 3, 1, 1))
+```
+
+\newpage
+
+# Review the community scoring mockup
+
+**Goal:** Evaluate the scoring dashboard and scorecards to identify gaps, inconsistencies, or improvements before finalising the framework. This is the group's opportunity to critique the tool before it is used for the actual assessment.
+
+---
+
+## Step 9: Visit the dashboard
+
+Interact with the scoring interface and note your first impressions. Is the layout intuitive, or do you have to search for key information? Are the scoring criteria clearly defined and consistently visible, or do you need to scroll back and forth? Is it clear how to navigate between different entries, and how to submit or save scores? Consider both the experience of a first-time user and that of someone who will use the tool repeatedly.
+
+```{r step9, results='asis'}
+blank_tbl("Your notes", 10)
+```
+
+\newpage
+
+## Step 10: Compare score cards
+
+Look for patterns across different entries. Are certain dimensions consistently scored higher or lower than others? Does the scoring align with your expert judgement, or do you see surprising results that warrant discussion? Are there entries where the scores cluster tightly (indicating consensus) or spread widely (indicating disagreement)? Note any dimensions that appear to be missing from the scorecard entirely.
+
+```{r step10, results='asis'}
+blank_tbl(c("Dimension", "Observations"), 6, c(2, 4))
+```
+
+\newpage
+
+## Step 11: Iterate from Step 5
+
+Insights from the scoring exercise may reveal missing keywords or evaluation dimensions. For example, if many papers score poorly on "fairness" but the search string did not include fairness-related terms, the query needs updating. Record each insight from the scoring that has an implication for the search strategy, and agree on whether to prioritise the search refinement or the scoring framework adjustment first.
+
+```{r step11, results='asis'}
+blank_tbl(c("Insight from scoring", "Implication for search"), 6, c(2.5, 3.5))
+```
+
+\newpage
+
+# Plan next step
+
+**Goal:** Consolidate what you have learned from the literature review and scoring exercises, and define the path forward for building a baseline scorecard for AI alignment in Dutch education.
+
+---
+
+## Step 12: Scope the review effort
+
+Decide whether the research question warrants a full systematic review or whether a rapid evidence assessment is sufficient given time, budget, and personnel constraints. A full systematic review offers rigour and reproducibility but requires significant resources (typically 4–6 months and two dedicated reviewers). A rapid evidence assessment can deliver actionable insights in 4–6 weeks but may have narrower scope or higher risk of bias. Consider the audience for the scorecard — who needs to be convinced, and what level of evidence will they require?
+
+```{r step12, results='asis'}
+blank_tbl("Your notes", 10)
+```
+
+\newpage
+
+## Step 13: Map the path to a scorecard
+
+Outline the remaining steps from where you are now to a published baseline scorecard. For each phase, identify the specific actions required, who will take responsibility, and a realistic target date. Consider: how will the synthesised findings be transformed into scoring dimensions? How will the stakeholder validation process work — surveys, workshops, or expert interviews? What format will the scorecard take, and how will it be published for community feedback?
+
+```{r step13, results='asis'}
+blank_tbl(c("Phase", "Actions", "Who", "Deadline"), 6, c(2, 2.5, 1.5, 1))
+```
+
+\newpage
+
+# Group voting
+
+Use this section to record priorities, scores, and consensus for each paper or resource considered during the workshop. Fill in the paper titles in the left column, then assign a priority score and note the key strength and key concern for each. Use the consensus table at the bottom to capture the group's top three priorities and the rationale behind each choice.
+
+```{r voting, results='asis'}
+blank_tbl(c("Paper / Resource", "Priority (1-5)", "Key strength", "Key concern"), 12, c(2, 1, 2, 2))
+```
+
+---
+
+**Consensus priorities**
+
+After individual voting is complete, discuss as a group and record the top three priorities that will guide the next phase of work.
+
+```{r consensus, results='asis'}
+blank_tbl(c("Top 3 priorities", "Rationale"), 3, c(2, 4))
+```

@@ -1,0 +1,602 @@
+---
+title: "AI Alignment"
+subtitle: "Community Materials"
+author: "Dr. Alan Berg / CEDA"
+date: "`r Sys.Date()`"
+output:
+  pagedown::html_paged:
+    toc: true
+    number_sections: true
+    self_contained: true
+    lightbox: true
+    gallery: true
+    md_extensions: "+raw_html"
+knit: pagedown::chrome_print
+bibliography: references.bib
+link-citations: true  
+---
+
+```{r setup, include=FALSE}
+# Suppress code, messages, and warnings for all chunks by default
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+<style>
+.callout {
+  margin: 1.5em 0; padding: 16px 20px;
+  border-left: 5px solid; border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+.callout-exercise { background: linear-gradient(135deg, #fff8e0 0%, #fffdf0 100%); border-color: #f7a802; }
+.callout-prisma { background-color: #f4f7f6; border-color: #2c3e50; }
+.callout-info { background: linear-gradient(135deg, #e0f3ff 0%, #f0f8ff 100%); border-color: #2c7bb6; }
+.callout-acknowledgement { background: linear-gradient(135deg, #f0e6ff 0%, #f8f0ff 100%); border-color: #6a3d9a; }
+.callout p { margin: 0; line-height: 1.6; }
+.db-tag {
+  display: inline-block; padding: 6px 16px;
+  border-radius: 20px; background: #e8f4fd;
+  border: 1px solid #2c7bb6; color: #1a5276;
+  text-decoration: none; font-size: 0.9em;
+}
+.db-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+</style>
+
+```{r create_table, echo=FALSE, message=FALSE, warning=FALSE}
+# Library imports and reference table builder — populates my_references with
+# citation metadata (title, description, motivation, URL, priority, tag)
+library(data.table)
+library(knitr)
+library(kableExtra)
+library(readr)
+
+# 1. Function to initialize an empty data table
+create_reference_table <- function() {
+  dt <- data.frame(
+    title = character(),
+    citation = character(),
+    description = character(),
+    motivation = as.character(),
+    url = character(),
+    priority = character(),
+    tag = as.character()
+  )
+  return(dt)
+}
+
+# 2. Function to add a single citation
+add_citation <- function(table, title, citation, description, motivation, url, priority,tag) {
+  new_row <- data.table(
+    title = as.character(title),
+    citation = as.character(citation),
+    description = as.character(description),
+    motivation = as.character(motivation),
+    url = as.character(url),
+    priority = as.character(priority),
+    tag = as.character(tag)
+  )
+  updated_table <- rbind(table, new_row)
+  return(updated_table)
+}
+
+render_kable <- function(df, col_widths = c("40%", "60%"), bg_cols = c("#FFF9E6", "#E8F5E9")) {
+  out <- knitr::kable(df, format = "html", escape = FALSE, rownames = FALSE) %>%
+    kable_styling(
+      bootstrap_options = c("bordered", "condensed", "responsive"),
+      full_width = TRUE, position = "center", font_size = 11
+    ) %>%
+    row_spec(0, background = "#343a40", color = "white", bold = TRUE)
+  for (i in seq_along(col_widths)) {
+    out <- out %>% column_spec(i, width = col_widths[i], background = bg_cols[i])
+  }
+  return(out)
+}
+
+
+# Create and populate the table
+my_references <- create_reference_table()
+
+my_references <- add_citation(
+  table = my_references,
+  title = "OpenLearnLM Benchmark: A Unified Framework for Evaluating Knowledge, Skill, and Attitude in Educational Large Language Models",
+  citation = "[@lee2026]",
+  description = "The OpenLearnLM benchmark presents a theory-grounded framework for assessing large language models across educational dimensions of knowledge, skills, and attitude using a 124,000-item dataset. It evaluates models on pedagogical understanding and behavioral consistency, revealing distinct capability trade-offs among frontier models across these axes.",
+  motivation = "An example of how to construct an Educational benchmark: OpenLearnLM provides an open, comprehensive framework for advancing LLM readiness in authentic educational contexts",
+  url = "https://arxiv.org/abs/2601.13882",
+  priority = "3",
+  tag ="BENCHMARK"
+)
+
+my_references <- add_citation(
+  table = my_references,
+  title = "Are Video Models Zero-Shot Learners and Reasoners in Education? EduVideoBench, A Knowledge-Skills-Attitude Benchmark for Educational Video Generation",
+  citation = "",
+  description = "EduVideoBench, the first balanced benchmark in the education domain, grounded in the Knowledge-Skills-Attitude (KSA) framework so that pedagogical adequacy and educational safety are evaluated jointly rather than as ad-hoc quality dimensions. Across five frontier VGMs, our results show substantial room for improvement across knowledge, skills, and attitude before they are classroom-ready.",
+  motivation = "Example of a benchmark for a specific modularity (Video) within Education",
+  url = "https://arxiv.org/abs/2605.26918",
+  priority = "3",
+  tag ="BENCHMARK"
+)
+
+
+my_references <- add_citation(
+  table = my_references,
+  title = "Towards responsible AI in education: A Delphi-AHP-based framework for evaluating educational large language models",
+  citation = "[@lin2026]",
+  description = "To steer educational LLMs towards responsible and beneficial development, this study aims to construct a multidimensional evaluation framework grounded in educational theory. Initially, a preliminary pool of evaluation indicators was established on the basis of a review of the literature and pedagogical theories. The Delphi method was subsequently employed to refine the indicator structure by integrating opinions from 21 cross-disciplinary experts.",
+  motivation = "An example of systematic process for including a community of experts in the Benchmark design process. A possible scalable approach that we can replicate.",
+  url = "https://www.sciencedirect.com/science/article/pii/S2666920X25001742",
+  priority = "1",
+  tag ="COMMUNITY"
+)
+
+
+my_references <- add_citation(
+  table = my_references,
+  title = "DUMB: A Benchmark for Smart Evaluation of Dutch Models",
+  citation = "[@wei2025]",
+  description = " Dutch Model Benchmark: DUMB. The benchmark includes a diverse set of datasets for low-, medium- and high-resource tasks. The total set of nine tasks includes four tasks that were previously not available in Dutch, but limited in extent by the definition of model",
+  motivation = "Dutch Benchmark",
+  url = "https://arxiv.org/abs/2305.13026",
+  priority = "2",
+  tag ="BENCHMARK"
+)
+
+
+
+my_references <- add_citation(
+  table = my_references,
+  title = "Cost, Usability, Credibility, Fairness, Accountability, Transparency, and Explainability Framework for Safe and Effective Large Language Models in Medical Education: Narrative Review and Qualitative Study.",
+  citation = "[@quttainah2024]",
+  description = "The aim of this study was to identify and prioritize the enablers for developing successful LLMs for medical education. We further evaluated the relationships among these identified enablers.",
+  motivation = "Feedback from experts and users. The study is the first to identify, prioritize, and analyze the relationships of enablers of effective LLMs for medical education The difference between expert and user opinions being that of users prefer cheaper models",
+  url = "https://ai.jmir.org/2024/1/e51834",
+  priority = "2",
+  tag ="COMMUNITY"
+)
+
+
+my_references <- add_citation(
+  table = my_references,
+  title = "Benchmarking and Evaluation Framework for Large Language Models in Education",
+  citation = "[@nikiforova-ilieva2025]",
+  description = "This paper examines the functional differences and optimal implementation of leading major language models with a focus on their functional capabilities, and performance in the context of learning and analytics tasks. In addition, a relatively new but gaining local popularity language model specialized in Bulgarian is also addressed.",
+  motivation = "Evaluating models in the cntext of a specific language. The results show that DeepSeek achieves the highest content accuracy, ChatGPT demonstrates the strongest pedagogical value, and BgGPT excels in localized educational tasks in Bulgarian.",
+  url = "https://doi.org/10.1109/ciees66347.2025.11300167",
+  priority = "2",
+  tag ="BENCHMARK"
+)
+
+
+my_references <- add_citation(
+  table = my_references,
+  title = "A comprehensive review of large language models: issues and solutions in learning environments",
+  citation = "[@shahzad2025]",
+  description = "This study provides a comprehensive review of LLMs, proposing a novel theoretical framework for their ethical integration into educational settings while addressing challenges such as bias, data privacy, and adaptability through practical case studies and actionable solutions.",
+  motivation = "Let us see if for each challenge we can define a measurable or an actionable together",
+  url = "https://link.springer.com/article/10.1007/s43621-025-00815-8",
+  priority = "1",
+  tag ="CHALLENGES"
+)
+
+my_references <- add_citation(
+  table = my_references,
+  title = "The life cycle of large language models in education: A framework for understanding sources of bias",
+  citation = "[@lee2024]",
+  description = "... the integration of LLMs in education technology has renewed concerns over algorithmic bias, which may exacerbate educational inequalities. Building on prior work that mapped the traditional machine learning life cycle, we provide a framework of the LLM life cycle from the initial development of LLMs to customizing pre-trained models for various applications in educational settings. We explain each step in the LLM life cycle and identify potential sources of bias that may arise in the context of education. ",
+  motivation = "By defining sources of bias we can add quality checks at specific points in the fine tuning of LLM models for the Dutch context",
+  url = " https://doi.org/10.1111/bjet.13505",
+  priority = "2",
+  tag ="BIAS"
+)
+
+# Select final columns (Dropping the individual title and citation columns)
+#display_df <- as.data.frame(my_references[, .(combined_title, description)])
+#colnames(display_df) <- c("Title & Citation", "Description\n(Click to Expand)")
+```
+
+# Introduction
+
+<div style="text-align:center;margin:1.5em auto">
+<svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,0.12)">
+  <defs>
+    <linearGradient id="sky-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="60%" stop-color="#1a3050"/>
+      <stop offset="100%" stop-color="#2a4060"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(255,255,200,0.5)"/>
+      <stop offset="40%" stop-color="rgba(255,255,200,0.12)"/>
+      <stop offset="100%" stop-color="rgba(255,255,200,0)"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="250" fill="url(#sky-grad)"/>
+  <circle cx="35" cy="20" r="1" fill="#fff" opacity="0.6"/>
+  <circle cx="80" cy="45" r="1.2" fill="#fff" opacity="0.5"/>
+  <circle cx="150" cy="15" r="0.8" fill="#fff" opacity="0.7"/>
+  <circle cx="175" cy="55" r="1" fill="#fff" opacity="0.4"/>
+  <circle cx="220" cy="30" r="1.3" fill="#fff" opacity="0.5"/>
+  <circle cx="280" cy="20" r="0.8" fill="#fff" opacity="0.6"/>
+  <circle cx="330" cy="65" r="1" fill="#fff" opacity="0.4"/>
+  <circle cx="370" cy="25" r="1.2" fill="#fff" opacity="0.5"/>
+  <circle cx="60" cy="80" r="0.8" fill="#fff" opacity="0.3"/>
+  <circle cx="130" cy="95" r="1" fill="#fff" opacity="0.3"/>
+  <circle cx="310" cy="100" r="0.8" fill="#fff" opacity="0.3"/>
+  <circle cx="250" cy="70" r="1.1" fill="#fff" opacity="0.4"/>
+  <circle cx="340" cy="45" r="16" fill="rgba(255,255,240,0.06)"/>
+  <circle cx="340" cy="45" r="10" fill="rgba(255,255,240,0.1)"/>
+  <g opacity="0">
+    <animate attributeName="opacity" from="0" to="1" dur="2.5s" begin="0.5s" fill="freeze"/>
+    <animateTransform attributeName="transform" type="translate" from="0 10" to="0 0" dur="2.5s" begin="0.5s" fill="freeze"/>
+    <text x="200" y="30" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="16"><animate attributeName="fill" values="rgba(180,210,255,0.9);rgba(255,215,0,0.9)" dur="3s" begin="0.5s" fill="freeze"/>If we seek we shall find</text>
+    <line x1="130" y1="37" x2="270" y2="37" stroke="rgba(255,255,240,0.2)" stroke-width="0.5"/>
+  </g>
+  <rect x="0" y="210" width="400" height="40" fill="#0d1f33"/>
+  <path d="M0,215 Q50,212 100,215 Q150,218 200,215 Q250,212 300,215 Q350,218 400,215" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <path d="M0,225 Q60,222 120,225 Q180,228 240,225 Q300,222 360,225 Q380,226 400,225" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <path d="M155,210 L165,200 L175,208 L185,210 Z" fill="#2a3038"/>
+  <path d="M210,210 L225,202 L235,208 L245,210 Z" fill="#2a3038"/>
+  <path d="M175,210 L190,204 L200,210 Z" fill="#3a4048"/>
+  <polygon points="207,110 215,110 225,208 217,208" fill="rgba(0,0,0,0.12)"/>
+  <polygon points="175,208 185,110 215,110 225,208" fill="#f0ebe0"/>
+  <polygon points="176.84,190 223.16,190 223.98,198 176.02,198" fill="#c0392b"/>
+  <polygon points="179.9,160 220.1,160 220.92,168 179.08,168" fill="#c0392b"/>
+  <polygon points="182.96,130 217.04,130 217.86,138 182.14,138" fill="#c0392b"/>
+  <path d="M 192,210 L 192,202 Q 200,194 208,202 L 208,210 Z" fill="#1a2030"/>
+  <polygon points="180,106 220,106 218,110 182,110" fill="#2c3e50"/>
+  <line x1="180" y1="106" x2="220" y2="106" stroke="#1a252f" stroke-width="2"/>
+  <rect x="184" y="84" width="32" height="22" fill="rgba(255,240,200,0.12)"/>
+  <line x1="190" y1="84" x2="190" y2="106" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="196" y1="84" x2="196" y2="106" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="202" y1="84" x2="202" y2="106" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="208" y1="84" x2="208" y2="106" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="214" y1="84" x2="214" y2="106" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <path d="M 182,84 Q 200,70 218,84 Z" fill="#2c3e50"/>
+  <line x1="200" y1="70" x2="200" y2="56" stroke="#2c3e50" stroke-width="2"/>
+  <circle cx="200" cy="56" r="3" fill="#2c3e50"/>
+  <g>
+    <animateTransform attributeName="transform" type="rotate" from="0 200 95" to="360 200 95" dur="6s" repeatCount="indefinite"/>
+    <polygon points="200,95 510,5 510,185" fill="rgba(255,255,220,0.06)"/>
+    <polygon points="200,95 510,30 510,160" fill="rgba(255,255,220,0.12)"/>
+    <polygon points="200,95 510,55 510,135" fill="rgba(255,255,220,0.22)"/>
+  </g>
+  <circle cx="200" cy="95" r="30" fill="url(#glow)"/>
+  <circle cx="200" cy="95" r="5" fill="#fffbe6"/>
+</svg>
+</div>
+
+<div class="callout callout-info">
+This document provides material for a community process around generating a scorecard for AI alignment.
+
+This material may or may not be directly applicable to a specific workshop context. Its primary purpose is to provide example structures to ease the burden later of running a community process.
+</div>
+
+# MAIN Exercises
+
+<div class="callout callout-exercise">
+These exercises guide you through reviewing literature, evaluating scoring mockups, and planning next steps for building an AI alignment scorecard. Work through them sequentially, iterating as needed.
+</div>
+
+## Searching for relevant information
+
+<p>This exercise builds familiarity with the current literature landscape and the search methodology. You will prioritise papers, critique the search strategy, and iteratively refine the query to improve recall and precision.</p>
+
+<ol>
+  <li><strong>Distribute</strong> the papers from the Background section among the group based on importance or relevance to each member's domain expertise.</li>
+  <li><strong>Select</strong> the best two papers and write a brief motivation explaining why they stand out — consider methodology, relevance to Dutch education, or actionable insights.</li>
+  <li><strong>Search online</strong> for a stronger paper on the same subject using citation trails or the databases listed in the Identification section.</li>
+  <li><strong>Read</strong> the PRISMA section above to understand the systematic review methodology before refining your search.</li>
+  <li><strong>Review and update</strong> the search query — what terms are missing? What would return more relevant results for your specific focus?</li>
+  <li><strong>Execute</strong> the refined search across the listed databases.</li>
+  <li><strong>Record</strong> the number of papers found at each stage to document recall and precision.</li>
+  <li><strong>Iterate</strong> from step 5, adjusting the Boolean string until the results converge on a manageable, relevant set.</li>
+</ol>
+
+## Review the community scoring mockup
+
+<p>Evaluate the current scoring dashboard and scorecards to identify gaps, inconsistencies, or improvements before finalising the framework.</p>
+
+<ol start="9">
+  <li><strong>Visit</strong> the dashboard and interact with the scoring interface. Note your first impressions: is the layout intuitive? Are the criteria clearly defined?</li>
+  <li><strong>Compare</strong> score cards across different entries. Look for patterns — are certain dimensions consistently scored higher or lower? Does the scoring align with your expert judgement?</li>
+  <li><strong>Iterate</strong> at least once from step 5 (search term refinement). New insights from the scoring may reveal missing keywords or evaluation dimensions.</li>
+</ol>
+
+## Plan next step
+
+<p>Consolidate what you have learned and define the path forward for creating a baseline scorecard for AI alignment in Dutch education.</p>
+
+<ol>
+  <li><strong>Scope</strong> the review effort. Does the research question warrant a full systematic review, or is a rapid evidence assessment sufficient given time and resource constraints? Consider the trade-off between rigour and feasibility.</li>
+  <li><strong>Map</strong> the path to a scorecard. Outline the remaining steps: synthesise findings, define scoring dimensions, weight criteria, validate with stakeholders, and produce the baseline scorecard for community feedback.</li>
+</ol>
+
+
+# Systematic Literature Review Methodology
+
+<div class="callout callout-prisma"><strong>PRISMA</strong> (Preferred Reporting Items for Systematic Reviews and Meta-Analyses) 2020 framework to ensure transparency and reproducibility in the identification, screening, eligibility, and inclusion of relevant literature.</div>
+
+One possible method involves a Prisma review. This approach entails conducting a systematic literature review to gather all existing evidence from scientifically analyzed research on AI alignment. By performing a systematic review, we can avoid duplicating work that has already been reviewed by a set of experts.
+
+This method is labour-intensive, but it is a gold standard for providing an authoritative answer to a specific set of questions. This approach is reproducible and allows for a documented path detailing how recommendations were formed.
+
+Next, we will walk through the various parts of the systematic literature review.
+
+## Identification — Database Search Strategy
+
+By establishing clear identification criteria, we can specify the information we seek from online resources, filtering tens of millions of research papers.
+
+> Here is an example query string to start a conversation around optimization of the search.
+
+- **Databases queried:**
+
+  <div class="db-tags">
+    <a href="https://www.scopus.com/search/form.uri?display=basic" class="db-tag">Scopus</a>
+    <a href="https://www.webofscience.com/wos/alldb/basic-search" class="db-tag">Web of Science</a>
+    <a href="https://arxiv.org/search/" class="db-tag">arXiv</a>
+    <a href="https://scholar.google.com/" class="db-tag">Google Scholar</a>
+    <a href="https://eric.ed.gov/" class="db-tag">ERIC</a>
+    <a href="https://dl.acm.org/search/advanced" class="db-tag">ACM Digital Library</a>
+  </div>
+
+- **Search strategy:** The search is structured into four conceptual blocks combined with AND. Each block captures a distinct facet of the research question:
+
+  | Block | Key Terms | Rationale |
+  |------------------------|------------------------|------------------------|
+  | AI / LLMs | `large language model`, `LLM`, `frontier model`, `generative AI`, `foundation model` | Captures the full range of relevant model types used in educational contexts |
+  | Alignment & Evaluation | `AI alignment`, `value alignment`, `benchmark`, `scorecard`, `rubric`, `evaluation criteria`, `quality framework`, `readiness`, `certification`, `audit` | Targets existing evaluation frameworks, criteria, scorecards, and readiness tools for judging LLMs |
+  | Education Context | `education`, `learning`, `pedagogy`, `Dutch education`, `Netherlands`, `MBO`, `HBO`, `vocational education`, `curriculum`, `competency`, `formative assessment` | Narrows the search to the educational domain with explicit Dutch focus |
+  | Cross-cutting Themes | `digital sovereignty`, `technological sovereignty`, `data sovereignty`, `cost`, `affordability`, `sustainability`, `environmental impact`, `carbon footprint`, `data standard`, `interoperability`, `educational data standard` | Covers broader policy, feasibility, sustainability, and data-exchange dimensions relevant to adoption |
+
+- **Search terms (combined as AND between blocks, OR within each block):**
+
+  - **AI / LLMs:** (`"large language model"` OR `"LLM"` OR `"frontier model"` OR `"generative AI"` OR `"foundation model"`)
+  - **Alignment & Evaluation:** (`"AI alignment"` OR `"value alignment"` OR `"capability control"` OR `"benchmark"` OR `"scorecard"` OR `"rubric"` OR `"evaluation criteria"` OR `"quality framework"` OR `"readiness"` OR `"certification"` OR `"assessment criteria"` OR `"audit"`)
+  - **Education Context:** (`"education"` OR `"learning"` OR `"pedagogy"` OR `"Dutch education"` OR `"Netherlands"` OR `"MBO"` OR `"HBO"` OR `"vocational education"` OR `"curriculum"` OR `"competency"` OR `"formative assessment"`)
+  - **Cross-cutting Themes:** (`"digital sovereignty"` OR `"technological sovereignty"` OR `"data sovereignty"` OR `"cost"` OR `"affordability"` OR `"sustainability"` OR `"environmental impact"` OR `"carbon footprint"` OR `"data standard"` OR `"interoperability"` OR `"educational data standard"`)
+
+- **Date range:** January 2023 to June 2026
+
+- **Language:** English only
+
+- **Document types:** Peer-reviewed journal articles, conference proceedings, and preprints from reputable venues
+
+- **Supplementary search:** Citation tracking (backward and forward) from key review papers and grey literature from known research groups (e.g., alignment research institutes, educational technology labs)
+
+## Screening — Title and Abstract Review
+
+> Screening filters out irrelevant papers and enables more focus on the papers that remain.
+
+
+- **Inclusion criteria:**
+  - Studies proposing or applying an evaluation framework, benchmark, or metric for LLMs in educational settings
+  - Studies addressing AI safety, alignment, bias, or governance specific to educational contexts
+  - Empirical studies (quantitative, qualitative, or mixed-methods) with reproducible methodology
+- **Exclusion criteria:**
+  - Opinion pieces, editorials, or non-empirical commentary without supporting data
+  - Studies focused solely on general-purpose LLM capabilities without educational application
+  - Preprints superseded by a later peer-reviewed version of the same work
+- **Process:** Two reviewers independently screened titles and abstracts. Disagreements resolved by consensus or third reviewer. Percentage agreement and Cohen's kappa recorded.
+
+## Eligibility — Full-Text Assessment
+
+> Here we filter down further
+
+- Full-text PDFs retrieved for all records passing screening
+- **Quality appraisal criteria:**
+  - Clarity of research question and methodology
+  - Rigor of evaluation design (sample size, metrics, baselines)
+  - Reproducibility: availability of datasets, code, or detailed protocols
+  - Relevance to the Dutch educational context or transferability to it
+- **Exclusion reasons recorded:**
+  - Insufficient methodological detail
+  - Out of scope after full-text review
+  - Duplicate or overlapping publication
+  - Low quality or irreproducible results
+
+## Inclusion — Final Selection
+
+> Here we refine our focus to the most actionable content.
+
+- Final corpus of studies confirmed after eligibility assessment
+- Thematic saturation verified: no new framework dimensions or evaluation approaches emerged in the final portion of screened records
+- Corpus categorised by:
+  - Framework type (benchmark, rubric, guideline, audit tool)
+  - Educational level (higher education, professional training, etc)
+  - Alignment dimension addressed (knowledge, skills, attitude, safety, bias, governance)
+
+## PRISMA Flow Diagram
+
+The Prisma Flow diagram below illustrates the filtering process, moving from a broad collection of raw evidence gathered using wide search terms down to highly specific details. When these details are combined, they allow one to begin answering focused questions regarding the subject at hand. In this case, concerning AI alignment, this workflow facilitates a high degree of reproducibility, meaning there is substantial evidence to support any claims made.
+
+```{r prisma-flow, echo=FALSE, results='asis'}
+# Render static HTML PRISMA 2020 flow diagram (no JS dependencies, compatible with pagedown chrome_print)
+cat('
+<div style="max-width: 650px; margin: 1.5em auto; font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif;">
+
+<div style="border:2px solid #2c7bb6; border-radius:8px; padding:12px 16px; background:#e0f3ff; text-align:center;">
+  <strong style="color:#2c7bb6;">Identification</strong><br>
+  Records identified from databases <strong>(n = ...)</strong><br>
+  Records from other sources <strong>(n = ...)</strong><br>
+  Total records identified <strong>(n = ...)</strong>
+</div>
+<div style="text-align:center; margin:6px 0; font-size:24px; color:#666;">&#8595;</div>
+
+<div style="border:2px solid #f7a802; border-radius:8px; padding:10px 16px; background:#fff8e0; text-align:center;">
+  Duplicates removed <strong>(n = ...)</strong>
+</div>
+<div style="text-align:center; margin:6px 0; font-size:24px; color:#666;">&#8595;</div>
+
+<div style="display:flex; gap:12px;">
+  <div style="flex:1; border:2px solid #d7191c; border-radius:8px; padding:12px 16px; background:#ffe0e0; text-align:center;">
+    <strong style="color:#d7191c;">Screening</strong><br>
+    Records screened <strong>(n = ...)</strong>
+  </div>
+  <div style="flex:1; border:2px solid #999; border-radius:8px; padding:12px 16px; background:#f5f5f5; text-align:center;">
+    <strong style="color:#999;">Excluded</strong><br>
+    By title/abstract <strong>(n = ...)</strong>
+  </div>
+</div>
+<div style="text-align:center; margin:6px 0; font-size:24px; color:#666;">&#8595;</div>
+
+<div style="display:flex; gap:12px;">
+  <div style="flex:1; border:2px solid #1a9641; border-radius:8px; padding:12px 16px; background:#e0ffe0; text-align:center;">
+    <strong style="color:#1a9641;">Eligibility</strong><br>
+    Full-text assessed <strong>(n = ...)</strong>
+  </div>
+  <div style="flex:1; border:2px solid #999; border-radius:8px; padding:12px 16px; background:#f5f5f5; text-align:center;">
+    <strong style="color:#999;">Excluded</strong><br>
+    Full-text excluded <strong>(n = ...)</strong>
+  </div>
+</div>
+<div style="text-align:center; margin:6px 0; font-size:24px; color:#666;">&#8595;</div>
+
+<div style="border:2px solid #6a3d9a; border-radius:8px; padding:12px 16px; background:#f0e6ff; text-align:center;">
+  <strong style="color:#6a3d9a;">Included</strong><br>
+  Studies in review <strong>(n = ...)</strong>
+</div>
+
+</div>
+')
+```
+
+# Background Information
+
+<div class="callout callout-info">
+<strong>How to read this table</strong>
+Each reference title is listed alongside a <strong>Citation</strong> column containing the citation key.
+Click <strong>Details</strong> to expand description, motivation, URL, and tag for each entry.
+References with incomplete metadata show only the citation key until the record is finalised.
+</div>
+
+
+```{r render_table, echo=FALSE, message=FALSE, warning=FALSE}
+# Build citation column with expandable description, motivation, and URL
+# Render expandable table with Title + Details columns using kableExtra styling
+my_references$citation_details <- mapply(function(cit, desc, mot, url,tag) {
+  parts <- list()
+  if (nzchar(desc)) parts <- c(parts, paste0('<strong>Description:</strong> ', desc))
+  if (nzchar(mot))  parts <- c(parts, paste0('<strong>Motivation:</strong> ', mot))
+  if (nzchar(url))  parts <- c(parts, paste0('<strong>URL:</strong> <a href="', url, '">', url, '</a>'))
+  if (nzchar(tag))  parts <- c(parts, paste0('<strong>TAG:</strong> <span style="color: darkred;">', tag,'</span>'))
+  if (length(parts) > 0) {
+    body <- paste0('<p>', paste(parts, collapse = '</p><p>'), '</p>')
+    paste0(cit, ' <details><summary>Details</summary>', body, '</details>')
+  } else {
+    cit
+  }
+}, my_references$citation, my_references$description, my_references$motivation, my_references$url, my_references$tag,USE.NAMES = FALSE)
+
+render_kable(my_references[, c('title', 'citation_details')])
+```
+
+# A conversation around AI observatories
+
+<div class="callout callout-info">
+This section presents curated evidence sources across observatories, datasets, data hubs, and periodic reports that monitor AI developments relevant to education. Use the expandable tables below to explore each resource.
+</div>
+
+```{r load-evidence}
+# Load curated evidence dataset (observatories, data hubs, datasets, reporting) from CSV
+evidence <- read_delim("~/Gitlab/AI-Alignment/Evidence/evidence.csv", 
+    delim = ";", escape_double = FALSE, trim_ws = TRUE)
+```
+
+## Observatories
+
+Curated portals and platforms that monitor AI policy, standards, incidents, and sectoral developments across health, education, media, urban, and digital domains. Sources include OECD.AI, EU AI Watch, national observatories, and global indexes.
+
+```{r evidence-table_ob, echo=FALSE, warning=FALSE, message=FALSE}
+# Create expandable details column (Description + URL) for evidence rows, then render filtered OBSERVATORY entries
+evidence$details_html <- mapply(function(detail, url) {
+  parts <- list()
+  if (nzchar(detail)) parts <- c(parts, paste0('<strong>Description:</strong> ', detail))
+  if (nzchar(url))    parts <- c(parts, paste0('<strong>URL:</strong> <a href="', url, '">', url, '</a>'))
+  if (length(parts) > 0) {
+    body <- paste0('<p>', paste(parts, collapse = '</p><p>'), '</p>')
+    paste0('<details><summary>Details</summary>', body, '</details>')
+  } else {
+    ''
+  }
+}, evidence$Details, evidence$URL, USE.NAMES = FALSE)
+
+render_kable(evidence[evidence$Domain == "OBSERVATORY", c('Title', 'details_html')])
+```
+
+## Data sets
+
+Structured datasets covering AI indicators, skills, employment, education, innovation, and digital transformation. Provided by Eurostat, OECD, Stanford HAI, CEDEFOP, and international survey programmes.
+
+```{r evidence-table_data, echo=FALSE, warning=FALSE, message=FALSE}
+# Render filtered DATA entries using the existing details_html column
+render_kable(evidence[evidence$Domain == "DATA", c('Title', 'details_html')])
+```
+
+## Data Hubs
+
+Aggregated platforms and queryable databases from Eurostat, ITU, ILO, OECD, and national statistical offices, offering multi-domain data on labour, education, innovation, law, and demographics.
+
+```{r evidence-table_hubs, echo=FALSE, warning=FALSE, message=FALSE}
+# Render filtered DATAHUB entries
+render_kable(evidence[evidence$Domain == "DATAHUB", c('Title', 'details_html')])
+```
+
+
+## Reporting
+
+Periodic index reports and recurring assessments tracking AI readiness, innovation, education, employment, and democratic values. Includes Stanford AI Index, Global Innovation Index, GEM Report, and EU scoreboards.
+
+```{r evidence-table_periodic, echo=FALSE, warning=FALSE, message=FALSE}
+# Render filtered PERIODIC (reporting) entries
+render_kable(evidence[evidence$Domain == "PERIODIC", c('Title', 'details_html')])
+```
+
+
+# Literature to help refine the search term
+
+<div class="callout callout-info">
+This table lists candidate citations for the systematic review. Use the <strong>Priority</strong> and <strong>Reviewer</strong> columns to track your screening assessment of each paper.
+</div>
+
+```{r raw-citations, echo=FALSE, warning=FALSE, message=FALSE}
+citations <- c(
+  "[@lee2026]", "[@lee2026a]", "[@lin2026]", "[@wei2025]",
+  "[@quttainah2024]", "[@nikiforova-ilieva2025]", "[@shahzad2025]",
+  "[@lee2024]", "[@lelièvre2025]", "[@brown2024]", "[@alzahrani2024]",
+  "[@jiang2025]", "[@liu2024]", "[@rooein2024]", "[@rooein2024]",
+  "[@jeon2026]", "[@zhou2025]", "[@balepur2026]", "[@moëll2025]",
+  "[@qian2026]", "[@jiao2025]", "[@hamna2026]", "[@li2025]",
+  "[@singh2025]", "[@chen2025]", "[@zhang2025]", "[@arora2025]",
+  "[@lunardi2025]", "[@potamitis2025]", "[@wang2025]",
+  "[@shashidhar2025]", "[@feuer2025]", "[@banyas2025]",
+  "[@mohammadi2025]", "[@zhu2026]", "[@kim2025]",
+  "[@devries2023]", "[@vanroy2023]", "[@vanroy2024]", "[@noels2024]",
+  "[@thellmann2024]", "[@barth2025]", "[@vintar2025]",
+  "[@martins2024]", "[@son2024]", "[@chang2024]", "[@ghosh2024]",
+  "[@gao2025]", "[@jegham2025]", "[@mehditabar2025]", "[@yuan2025]",
+  "[@husom2025]", "[@wu2025]", "[@dauner2025]", "[@vijay2025]",
+  "[@huang2025a]", "[@budler2025]", "[@cámara2024]", "[@mcintosh2026]",
+  "[@guo2023]", "[@xu2024]", "[@shool2025]", "[@banerjee2024]",
+  "[@polo2024]", "[@definelicht2023]", "[@pomerenke2025]"
+)
+
+citations <- unique(citations)
+
+raw_table <- data.frame(Citations = citations, Priority_And_Notes = "", Reviewer = "",
+                        stringsAsFactors = FALSE)
+
+render_kable(raw_table, col_widths = c("25%", "65%", "10%"), bg_cols = c("#FFF9E6", "#E8F5E9", "#f0e6ff"))
+```
+
+# Acknowledgements
+
+<div class="callout callout-acknowledgement">
+***Assisted Authoring***
+
+This document was created with the assistance of opencode, an AI-powered coding assistant, running <strong>DeepSeek V4 Flash</strong> as its underlying language model. The tool was used for drafting, editing, and formatting throughout the preparation of this report.
+</div>
+
+# References
+
+
+

@@ -1,0 +1,180 @@
+---
+title: "Reading List: AI Alignment & LLM Benchmarking"
+author: "Research Companion"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    theme: flatly
+    highlight: tango
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(DT)
+library(dplyr)
+library(jsonlite)
+library(RefManageR)
+```
+
+<style>
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: #1a1a1a;
+  background-color: #F7FAFC;
+}
+.main-container {
+  max-width: 1100px !important;
+  margin: 40px auto;
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+.readme-content {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+}
+.info-box {
+  border-left: 4px solid darkblue;
+  background: #f0f4ff;
+  padding: 1em 1.25em;
+  border-radius: 4px;
+  margin: 1em 0;
+}
+.info-box strong {
+  color: darkblue;
+}
+.section-intro {
+  font-style: italic;
+  color: #333;
+  padding: 0.5em 1em;
+  border-left: 2px solid #8ab4f8;
+  background: #f8faff;
+  border-radius: 3px;
+  margin: 0.5em 0 1.5em 0;
+}
+table.dataTable tbody tr {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+table.dataTable tbody tr:hover {
+  background-color: #EDF2F7 !important;
+}
+td.details-control {
+  cursor: pointer;
+}
+.citation-details {
+  background: #F8FAFC;
+  padding: 20px;
+  border-left: 4px solid darkblue;
+  border-radius: 0 8px 8px 0;
+  margin: 10px 0;
+}
+.details-title {
+  font-weight: 600;
+  color: darkblue;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+.details-abstract {
+  font-style: italic;
+  color: #4A5568;
+  line-height: 1.6;
+}
+.details-meta {
+  margin-top: 12px;
+  font-size: 0.9em;
+  color: #718096;
+}
+</style>
+
+<div class="readme-content">
+
+# Reading List: <span style="color: darkblue; font-weight: 500;">AI Alignment</span> & LLM Benchmarking
+
+<div class="section-intro">
+A curated collection of publications on <span style="color: darkblue; font-weight: 500;">large language model</span> benchmarking and evaluation, selected to support the <span style="color: darkblue; font-weight: 500;">AI Alignment</span> workshop series. Topics span evaluation frameworks, benchmark design and critique, multilingual and domain-specific assessments, educational applications, responsible AI, and the environmental impact of LLM inference — reflecting the breadth of the field and its relevance to <span style="color: darkblue; font-weight: 500;">Dutch higher education</span>.
+</div>
+
+<div class="info-box">
+<strong>How to use this reading list</strong><br>
+Click the <strong>DOI</strong> link in the first column to open the original paper. Use the search box to filter by author, title, or keyword.
+</div>
+
+```{r process-bib}
+# 1. Read and parse the external BibTeX database
+bib_data <- ReadBib("references.bib", check = FALSE)
+bib_df <- as.data.frame(bib_data)
+
+# 2. Safely ensure all possible columns exist to avoid compilation crashes
+required_cols <- c("author", "year", "title", "journal", "booktitle", "abstract", "keywords", "url", "doi")
+for (col in required_cols) {
+  if (!col %in% names(bib_df)) {
+    bib_df[[col]] <- NA_character_
+  }
+}
+
+# 3. Normalize columns securely now that columns are guaranteed to exist
+bib_clean <- bib_df %>%
+  mutate(
+    Author = ifelse(is.na(author), "Unknown Author", as.character(author)),
+    Year = ifelse(is.na(year), "N/A", as.character(year)),
+    Title = ifelse(is.na(title), "Untitled", as.character(title)),
+    Journal = case_when(
+      !is.na(journal) ~ as.character(journal),
+      !is.na(booktitle) ~ as.character(booktitle),
+      TRUE ~ "Other Source"
+    ),
+    Abstract = ifelse(is.na(abstract), "No abstract provided for this reference.", as.character(abstract)),
+    Keywords = ifelse(is.na(keywords), "None", as.character(keywords)),
+    Link = ifelse(is.na(url) | url == "", "", paste0('<a href="', url, '" target="_blank">', doi, '</a>')),
+    ChildHTML = paste0(
+      '<div class="citation-details">',
+        '<h4 class="details-title">', Title, '</h4>',
+        '<p class="details-abstract"><strong>Abstract:</strong> ', Abstract, '</p>',
+        '<div class="details-meta"><strong>Keywords:</strong> ', Keywords, '</div>',
+      '</div>'
+    )
+  )
+
+# 4. Create the visible skeleton table columns
+display_df <- bib_clean %>%
+  select(Link, Author, Year, Title, Journal)
+```
+
+```{r render-table}
+# 4. Bind data frame to an interactive datatable view
+datatable(
+  display_df,
+  escape = FALSE,
+  options = list(
+    columnDefs = list(
+      list(className = 'details-control', targets = 3)
+    ),
+    pageLength = 10,
+    dom = 'ftip' # Enables searching (f), table (t), info (i), and pagination (p)
+  ),
+  callback = JS(paste0(
+    "var raw_data = ", jsonlite::toJSON(bib_clean), ";",
+    "table.on('click', 'td.details-control', function() {",
+    "  var tr = $(this).closest('tr');",
+    "  var row = table.row(tr);",
+    "  if (row.child.isShown()) {",
+    "    row.child.hide();",
+    "    tr.removeClass('shown');",
+    "  } else {",
+    "    var idx = row.index();",
+    "    var record = raw_data[idx];",
+    "    row.child(record.ChildHTML).show();",
+    "    tr.addClass('shown');",
+    "  }",
+    "});"
+  ))
+)
+```
+
+---
+
+<p style="color: #555;"><em>Last updated: `r Sys.Date()` — references curated for the AI Alignment workshop materials.</em></p>
+
+</div>
