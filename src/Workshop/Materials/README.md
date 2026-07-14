@@ -63,7 +63,7 @@
 
 This directory contains materials designed to support workshops on <span style="color: darkblue; font-weight: 500;">AI Alignment</span>, benchmarking, and the evaluation of AI systems against educational values. Materials are developed under the <span style="color: darkblue; font-weight: 500;">CEDA</span> project and are intended for use by the Dutch Education community.
 
----
+
 
 ## Workshop Usage Guide
 
@@ -106,7 +106,8 @@ Each session should be tailored to the audience — from introductory overviews 
 </ul>
 </div>
 
----
+
+
 
 ## Contents
 
@@ -140,7 +141,7 @@ Each session should be tailored to the audience — from introductory overviews 
 
 <p style="color: #555;"><em>Source .Rmd files can be opened and rendered in RStudio. Pre-rendered HTML and DOCX outputs are provided for immediate use.</em></p>
 
----
+
 
 
 
@@ -149,7 +150,7 @@ Each session should be tailored to the audience — from introductory overviews 
 1.  [Live Benchmarks Dashboard](Dashboard/Live_Data_Story.html) - A dashboard that tracks the performance of AI models against various benchmarks.
 1.  [Information Dashboard](Dashboard/info_benchmarks.html) - An information dashboard about AI Alignment. The menu option [Scorecard/Visualization](Dashboard/info_benchmarks.html#visualization) is a mockup of a potential community process.
 
----
+
 
 
 ## <span style="color: darkblue;">Acknowledgments</span>
@@ -160,7 +161,7 @@ This work is part of the <span style="color: darkblue; font-weight: 500;">AI Ali
 See the project-level <a href="/Acknowledgment.md">Acknowledgment</a> page for detailed credits and contributors.
 </div>
 
----
+
 
 <p style="color: #555;"><em>For questions or contributions, contact Alan Berg.</em></p>
 
