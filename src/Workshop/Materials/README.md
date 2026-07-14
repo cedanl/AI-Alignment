@@ -142,10 +142,14 @@ Each session should be tailored to the audience — from introductory overviews 
 
 ---
 
+
+
 ## <span style="color: darkblue;">Dashboards</span>
 
 1.  [Live Benchmarks Dashboard](Dashboard/Live_Data_Story.html) - A dashboard that tracks the performance of AI models against various benchmarks.
 1.  [Information Dashboard](Dashboard/info_benchmarks.html) - An information dashboard about AI Alignment. The menu option [Scorecard/Visualization](Dashboard/info_benchmarks.html#visualization) is a mockup of a potential community process.
+
+---
 
 
 ## <span style="color: darkblue;">Acknowledgments</span>
