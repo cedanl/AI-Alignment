@@ -1,0 +1,23 @@
+$primary-color: #003b6f;
+
+$body-background-color: #ffffff;
+$sidebar-color: #f0f4fa;
+$search-background-color: #ffffff;
+$table-background-color: #ffffff;
+$code-background-color: #f4f6f9;
+$feedback-color: darken($sidebar-color, 4%);
+
+$body-text-color: #2c303a;
+$body-heading-color: #1a2233;
+$nav-child-link-color: #3d4a5c;
+$search-result-preview-color: #5c6570;
+$base-button-color: #e8edf4;
+
+$link-color: $primary-color;
+$btn-primary-color: $primary-color;
+
+$font-montserrat: "Montserrat", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+$font-inter: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+$body-font-family: $font-inter;
+$body-heading-font-family: $font-montserrat;
