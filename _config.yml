@@ -11,3 +11,6 @@ color_scheme: ai-alignment
 search_enabled: true
 search:
   tokenizer_separator: /[\s/]+/
+exclude:
+  README.md
+  README.html
