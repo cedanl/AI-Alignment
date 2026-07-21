@@ -22,7 +22,7 @@ Each session should be tailored to the audience — from introductory overviews 
 
 <li>Review the materials listed in <a href="#contents">Contents</a> and select those relevant to your session and audience size (allow <strong>30 min</strong>).</li>
 
-<li>Familiarise yourself with the [AI Alignment]{.color-accent-text} project context by reading the <a href="https://cedanl.github.io/AI-Alignment">project README</a> and the <a href="https://cedanl.github.io/AI-Alignment/Dashboard/info_benchmarks.html">information dashboard</a>.</li>
+<li>Familiarise yourself with the ***AI Alignment project*** context by reading the <a href="https://cedanl.github.io/AI-Alignment">project README</a> and the <a href="https://cedanl.github.io/AI-Alignment/Dashboard/info_benchmarks.html">information dashboard</a>.</li>
 
 <li>Prepare any technical setup: projector, printed handouts, live dashboard access. If using the live dashboards, test the URLs in advance.</li>
 
