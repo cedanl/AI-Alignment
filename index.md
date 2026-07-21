@@ -4,11 +4,6 @@ title: AI Alignment Scorecards
 nav_order: 1
 ---
 
-> ### 🚧 Under Construction
-> This website is a work in progress.
-
-
-
 # AI Alignment Scorecards
 
 ## Introduction
@@ -22,9 +17,17 @@ Benchmarks are essential for evaluating the performance, safety, and ethical imp
 ## Information Products
 
 1.  [Live Benchmarks Dashboard](Dashboard/Live_Data_Story.html) - A dashboard that tracks the performance of AI models against various benchmarks.
-1.  [Information Dashboard](Dashboard/info_benchmarks.html) - An information dashboard about AI Alignment. The menu option [Scorecard/Visualization](Dashboard/info_benchmarks.html#visualization) is a mockup of a potential community process.
+1.  [Information Dashboard](Dashboard/info_benchmarks.html) - An information dashboard about AI Alignment. The menu option [Scorecard/Visualization](Dashboard/info_benchmarks.html#visualization) is a mockup of a community process.
 
 > More information products to be added in the future, such as a merger of live data into a community scorecard process.
+
+## Community Processes
+
+You can materials for a community workshops centered around discovering what has already been done and planning a roadmap to a set of supporting tools here:
+
+1. [Workshop materials](src/Workshop/Materials/)
+
+
 
 
 

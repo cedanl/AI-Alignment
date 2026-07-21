@@ -1,4 +1,10 @@
-## Introduction
+---
+title: "About This Project"
+layout: default
+nav_order: 0
+---
+
+# Introduction
 
 This is the source code for Website (<https://cedanl.github.io/AI-Alignment/>)\
 about ***AI alignment***.
