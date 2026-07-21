@@ -1,7 +1,7 @@
 ---
 title: "Workshop Materials"
 layout: default
-nav_order: 20
+nav_order: 100
 ---
 
 # Workshop Materials — AI Alignment
@@ -12,12 +12,11 @@ This directory contains materials designed to support workshops on [AI Alignment
 
 A workshop typically moves through three phases: preparing the context and materials, facilitating engagement, and capturing outcomes for continued progress.
 
-::: section-intro
-Each session should be tailored to the audience — from introductory overviews for educators to deep-dive technical sessions for data professionals. Estimated timings assume a 60–90 minute slot unless otherwise noted.
-:::
 
-::: step-card
-[1]{.step-number} <strong class="color-accent-text">Preparation (before the session)</strong>
+Each session should be tailored to the audience — from introductory overviews for educators to deep-dive technical sessions for data professionals. Estimated timings assume a 60–90 minute slot unless otherwise noted.
+
+
+'1' <strong class="color-accent-text">Preparation (before the session)</strong>
 
 <ul>
 
@@ -30,10 +29,10 @@ Each session should be tailored to the audience — from introductory overviews 
 <li>For groups larger than 15, prepare breakout prompts and assign a facilitator per table.</li>
 
 </ul>
-:::
 
-::: step-card
-[2]{.step-number} <strong class="color-accent-text">Facilitation (during the session)</strong>
+
+
+'2' <strong class="color-accent-text">Facilitation (during the session)</strong>
 
 <ul>
 
@@ -46,10 +45,10 @@ Each session should be tailored to the audience — from introductory overviews 
 <li>Close with a share-out (10–15 min): each group highlights one insight or open question.</li>
 
 </ul>
-:::
 
-::: step-card
-[3]{.step-number} <strong class="color-accent-text">Follow-up (after the session)</strong>
+
+
+'3' <strong class="color-accent-text">Follow-up (after the session)</strong>
 
 <ul>
 
@@ -62,7 +61,7 @@ Each session should be tailored to the audience — from introductory overviews 
 <li>Share a summary email with links to the materials and dashboard within one week.</li>
 
 </ul>
-:::
+
 
 ## Contents
 
@@ -72,13 +71,11 @@ Each session should be tailored to the audience — from introductory overviews 
 | [READING_LIST](READING_LIST.html) (.Rmd / .html) | Dynamic, searchable bibliography of 65+ publications on LLM benchmarking and evaluation, with expandable abstracts and DOI links to original papers. | Display during the session as a live reference. Encourage participants to filter by author/title and explore papers relevant to their context. |
 | [worksheet](worksheet.docx) (.Rmd / .docx) | Workshop worksheet with blank tables for note-taking, scoring exercises, and group discussion prompts. | Print and distribute to participants at the start of the session. Editable DOCX can be adapted for different group sizes. |
 | [references.bib](references.bib) | BibTeX database of 65 references on LLM benchmarking, shared by the R Markdown materials. | Used automatically by the .Rmd files. Update or extend to customise the reading list for specific workshop topics. |
-{.contents-table}
 
-::: {.muted-text}
 
 *Source .Rmd files can be opened and rendered in RStudio. Pre-rendered HTML and DOCX outputs are provided for immediate use.*
 
-:::
+
 
 ## Dashboards
 
@@ -87,12 +84,10 @@ Each session should be tailored to the audience — from introductory overviews 
 
 ## Acknowledgments
 
-::: info-box
+
 <strong>Acknowledgments</strong><br> This work is part of the [AI Alignment]{.color-accent-text} project under [CEDA]{.color-accent-text}, supported by the Npuls LA team. The project builds on insights from the 2025 Npuls report on Generative AI in Dutch education, which identified benchmarking and scorecarding as essential steps toward responsible AI deployment.<br><br> See the project-level <a href="https://cedanl.github.io/AI-Alignment/Acknowledgment.md">Acknowledgment</a> page for detailed credits and contributors.
-:::
 
-::: {.muted-text}
 
-*For questions or contributions, contact Alan Berg.*
+> *For questions or contributions, contact Alan Berg.*
 
-:::
+
