@@ -6,7 +6,7 @@ nav_order: 100
 
 # Workshop Materials — AI Alignment
 
-This directory contains materials designed to support workshops on [AI Alignment]{.color-accent-text}, benchmarking, and the evaluation of AI systems against educational values. Materials are developed under the [CEDA]{.color-accent-text} project and are intended for use by the Dutch Education community.
+This directory contains materials designed to support workshops on AI Alignment, benchmarking, and the evaluation of AI systems against educational values. Materials are developed under the CEDA project and are intended for use by the Dutch Education community.
 
 ## Workshop Usage Guide
 
