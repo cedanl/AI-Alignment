@@ -27,7 +27,8 @@ You can materials for a community workshops centered around discovering what has
 
 1. [Workshop materials](src/Workshop/Materials/)
 
+This directory contains materials designed to support workshops on [AI Alignment]{.color-accent-text}, benchmarking, and the evaluation of AI systems against educational values. Materials are developed under the [CEDA]{.color-accent-text} project and are intended for use by the Dutch Education community.
 
-
+A workshop typically moves through three phases: preparing the context and materials, facilitating engagement, and capturing outcomes for continued progress.
 
 
