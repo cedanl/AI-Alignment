@@ -17,13 +17,13 @@ Each session should be tailored to the audience — from introductory overviews 
 :::
 
 ::: step-card
-[1]{.step-number} <strong class="color-accent-text" style="font-size: 1.05em;">Preparation (before the session)</strong> <br><br>
+[1]{.step-number} <strong class="color-accent-text">Preparation (before the session)</strong>
 
 <ul>
 
 <li>Review the materials listed in <a href="#contents">Contents</a> and select those relevant to your session and audience size (allow <strong>30 min</strong>).</li>
 
-<li>Familiarise yourself with the [AI Alignment Scorecards]{.color-accent-text} project context by reading the <a href="/">project README</a> and the <a href="/Dashboard/info_benchmarks.html">information dashboard</a>.</li>
+<li>Familiarise yourself with the [AI Alignment]{.color-accent-text} project context by reading the <a href="https://cedanl.github.io/AI-Alignment">project README</a> and the <a href="https://cedanl.github.io/AI-Alignment/Dashboard/info_benchmarks.html">information dashboard</a>.</li>
 
 <li>Prepare any technical setup: projector, printed handouts, live dashboard access. If using the live dashboards, test the URLs in advance.</li>
 
@@ -33,15 +33,15 @@ Each session should be tailored to the audience — from introductory overviews 
 :::
 
 ::: step-card
-[2]{.step-number} <strong class="color-accent-text" style="font-size: 1.05em;">Facilitation (during the session)</strong> <br><br>
+[2]{.step-number} <strong class="color-accent-text">Facilitation (during the session)</strong>
 
 <ul>
 
-<li>Open with the <strong>AI Alignment</strong> framing (5–10 min): why benchmarking and scorecarding matter for responsible AI in education. Use the <a href="/">project homepage</a> as a visual anchor.</li>
+<li>Open with the <strong>AI Alignment</strong> framing (5–10 min): why benchmarking and scorecarding matter for responsible AI in education. Use the <a href="https://cedanl.github.io/AI-Alignment">project homepage</a> as a visual anchor.</li>
 
 <li>Distribute or project the selected materials. Allow participants to explore individually (5 min) before group discussion.</li>
 
-<li>Encourage participants to explore the <a href="/Dashboard/Live_Data_Story.html">Live Benchmarks Dashboard</a> for real-time data and reflect on what the metrics mean for their context.</li>
+<li>Encourage participants to explore the <a href="https://cedanl.github.io/AI-Alignment/Dashboard/Live_Data_Story.html">Live Benchmarks Dashboard</a> for real-time data and reflect on what the metrics mean for their context.</li>
 
 <li>Close with a share-out (10–15 min): each group highlights one insight or open question.</li>
 
@@ -49,7 +49,7 @@ Each session should be tailored to the audience — from introductory overviews 
 :::
 
 ::: step-card
-[3]{.step-number} <strong class="color-accent-text" style="font-size: 1.05em;">Follow-up (after the session)</strong> <br><br>
+[3]{.step-number} <strong class="color-accent-text">Follow-up (after the session)</strong>
 
 <ul>
 
@@ -57,7 +57,7 @@ Each session should be tailored to the audience — from introductory overviews 
 
 <li>Capture which materials resonated and any gaps identified — this feeds directly into the project's iterative development.</li>
 
-<li>Refer participants to the project <a href="/">homepage</a> for continued engagement and dashboard updates.</li>
+<li>Refer participants to the project <a href="https://cedanl.github.io/AI-Alignment">homepage</a> for continued engagement and dashboard updates.</li>
 
 <li>Share a summary email with links to the materials and dashboard within one week.</li>
 
@@ -72,12 +72,13 @@ Each session should be tailored to the audience — from introductory overviews 
 | [READING_LIST](READING_LIST.html) (.Rmd / .html) | Dynamic, searchable bibliography of 65+ publications on LLM benchmarking and evaluation, with expandable abstracts and DOI links to original papers. | Display during the session as a live reference. Encourage participants to filter by author/title and explore papers relevant to their context. |
 | [worksheet](worksheet.docx) (.Rmd / .docx) | Workshop worksheet with blank tables for note-taking, scoring exercises, and group discussion prompts. | Print and distribute to participants at the start of the session. Editable DOCX can be adapted for different group sizes. |
 | [references.bib](references.bib) | BibTeX database of 65 references on LLM benchmarking, shared by the R Markdown materials. | Used automatically by the .Rmd files. Update or extend to customise the reading list for specific workshop topics. |
+{.contents-table}
 
-<p class="muted-text">
+::: {.muted-text}
 
-<em>Source .Rmd files can be opened and rendered in RStudio. Pre-rendered HTML and DOCX outputs are provided for immediate use.</em>
+*Source .Rmd files can be opened and rendered in RStudio. Pre-rendered HTML and DOCX outputs are provided for immediate use.*
 
-</p>
+:::
 
 ## Dashboards
 
@@ -87,11 +88,11 @@ Each session should be tailored to the audience — from introductory overviews 
 ## Acknowledgments
 
 ::: info-box
-<strong>Acknowledgments</strong><br> This work is part of the [AI Alignment]{.color-accent-text} project under [CEDA]{.color-accent-text}, supported by the Npuls LA team. The project builds on insights from the 2025 Npuls report on Generative AI in Dutch education, which identified benchmarking and scorecarding as essential steps toward responsible AI deployment.<br><br> See the project-level <a href="/Acknowledgment.md">Acknowledgment</a> page for detailed credits and contributors.
+<strong>Acknowledgments</strong><br> This work is part of the [AI Alignment]{.color-accent-text} project under [CEDA]{.color-accent-text}, supported by the Npuls LA team. The project builds on insights from the 2025 Npuls report on Generative AI in Dutch education, which identified benchmarking and scorecarding as essential steps toward responsible AI deployment.<br><br> See the project-level <a href="https://cedanl.github.io/AI-Alignment/Acknowledgment.md">Acknowledgment</a> page for detailed credits and contributors.
 :::
 
-<p class="muted-text">
+::: {.muted-text}
 
-<em>For questions or contributions, contact Alan Berg.</em>
+*For questions or contributions, contact Alan Berg.*
 
-</p>
+:::

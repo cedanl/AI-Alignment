@@ -29,7 +29,7 @@ A workshop typically moves through three phases: preparing the context and mater
 
 You can materials for a community workshops centered around discovering what has already been done and planning a roadmap to a set of supporting tools here:
 
-1. [Workshop materials](src/Workshop/Materials/)
+1. [Workshop materials](src/Workshop/Materials/README.html)
 
 
 

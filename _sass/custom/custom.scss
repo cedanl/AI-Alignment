@@ -20,6 +20,10 @@ $color-accent: $link-color;
   margin: 1em 0;
 }
 
+.step-card strong {
+  font-size: 1.05em;
+}
+
 .step-number {
   display: inline-block;
   background: $color-accent;
