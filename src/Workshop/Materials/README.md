@@ -76,16 +76,11 @@ Each session should be tailored to the audience — from introductory overviews 
 *Source .Rmd files can be opened and rendered in RStudio. Pre-rendered HTML and DOCX outputs are provided for immediate use.*
 
 
-
 ## Dashboards
 
 1.  [Live Benchmarks Dashboard](Dashboard/Live_Data_Story.html) - A dashboard that tracks the performance of AI models against various benchmarks.
 2.  [Information Dashboard](Dashboard/info_benchmarks.html) - An information dashboard about AI Alignment. The menu option [Scorecard/Visualization](Dashboard/info_benchmarks.html#visualization) is a mockup of a viable community process.
 
-## Acknowledgments
-
-
-<strong>Acknowledgments</strong><br> This work is part of the [AI Alignment]{.color-accent-text} project under [CEDA]{.color-accent-text}, supported by the Npuls LA team. The project builds on insights from the 2025 Npuls report on Generative AI in Dutch education, which identified benchmarking and scorecarding as essential steps toward responsible AI deployment.<br><br> See the project-level <a href="https://cedanl.github.io/AI-Alignment/Acknowledgment.md">Acknowledgment</a> page for detailed credits and contributors.
 
 
 > *For questions or contributions, contact Alan Berg.*

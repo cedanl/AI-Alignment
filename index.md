@@ -31,6 +31,3 @@ You can materials for a community workshops centered around discovering what has
 
 1. [Workshop materials](src/Workshop/Materials/README.html)
 
-
-
-

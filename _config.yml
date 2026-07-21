@@ -8,6 +8,13 @@ color_scheme: ai-alignment
 search_enabled: true
 search:
   tokenizer_separator: /[\s/]+/
+callouts:
+  note:
+    color: blue
+  warning:
+    color: red
+  highlight:
+    color: yellow
 exclude: 
   - README.md
   - README.html
