@@ -76,13 +76,6 @@ Each session should be tailored to the audience — from introductory overviews 
 *Source .Rmd files can be opened and rendered in RStudio. Pre-rendered HTML and DOCX outputs are provided for immediate use.*
 
 
-## Dashboards
-
-1.  [Live Benchmarks Dashboard](Dashboard/Live_Data_Story.html) - A dashboard that tracks the performance of AI models against various benchmarks.
-2.  [Information Dashboard](Dashboard/info_benchmarks.html) - An information dashboard about AI Alignment. The menu option [Scorecard/Visualization](Dashboard/info_benchmarks.html#visualization) is a mockup of a viable community process.
-
-
-
 > *For questions or contributions, contact Alan Berg.*
 
 
