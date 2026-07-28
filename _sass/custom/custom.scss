@@ -2,7 +2,7 @@ $color-accent: $link-color;
 
 .info-box {
   border-left: 4px solid $color-accent;
-  background: #f0f4ff;
+  background: #f4f0fa;
   padding: 1em 1.25em;
   border-radius: 4px;
   margin: 1em 0;
@@ -14,7 +14,7 @@ $color-accent: $link-color;
 
 .step-card {
   border-left: 4px solid $color-accent;
-  background: #f8faff;
+  background: #f6f2fc;
   padding: 0.75em 1.25em;
   border-radius: 4px;
   margin: 1em 0;
@@ -22,6 +22,14 @@ $color-accent: $link-color;
 
 .step-card strong {
   font-size: 1.05em;
+}
+
+.step-section {
+  border-left: 3px solid $color-accent;
+  background: #f6f2fc;
+  padding: 0.5em 1.25em 0.25em;
+  border-radius: 4px;
+  margin: 1.5em 0;
 }
 
 .step-number {
@@ -40,10 +48,10 @@ $color-accent: $link-color;
 
 .section-intro {
   font-style: italic;
-  color: #333;
+  color: #332e46;
   padding: 0.5em 1em;
-  border-left: 2px solid #8ab4f8;
-  background: #f8faff;
+  border-left: 2px solid #8b7aaa;
+  background: #f4f0fa;
   border-radius: 3px;
   margin: 0.5em 0 1.5em 0;
 }
@@ -57,11 +65,15 @@ $color-accent: $link-color;
 
 .contents-table td {
   padding: 0.5em 1em;
-  border-bottom: 1px solid #e0e7f0;
+  border-bottom: 1px solid #ddd5e8;
 }
 
 .contents-table tr:last-child td {
   border-bottom: none;
+}
+
+.contents-table tr:hover td {
+  background: #f4f0fa;
 }
 
 .color-accent-text {
@@ -73,11 +85,20 @@ $color-accent: $link-color;
   color: #555;
 }
 
+blockquote {
+  border-left: 3px solid #8b7aaa;
+  background: #f4f0fa;
+  padding: 0.75em 1.25em;
+  border-radius: 4px;
+  margin: 1em 0;
+  color: #332e46;
+}
+
 .site-footer {
   padding: 1rem;
   text-align: center;
   font-size: 0.85em;
-  color: #5c6570;
-  border-top: 1px solid #e0e7f0;
+  color: #6a6070;
+  border-top: 1px solid #ddd5e8;
   margin-top: 2rem;
 }

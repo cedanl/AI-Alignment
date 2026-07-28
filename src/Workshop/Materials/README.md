@@ -11,12 +11,14 @@ This directory contains materials designed to support workshops on AI Alignment,
 ## Workshop Usage Guide
 
 A workshop typically moves through three phases: preparing the context and materials, facilitating engagement, and capturing outcomes for continued progress.
-
+{:.section-intro}
 
 Each session should be tailored to the audience — from introductory overviews for educators to deep-dive technical sessions for data professionals. Estimated timings assume a 60–90 minute slot unless otherwise noted.
 
 
-'1' <strong class="color-accent-text">Preparation (before the session)</strong>
+<div class="step-section">
+
+<span class="step-number">1</span> <strong class="color-accent-text">Preparation (before the session)</strong>
 
 <ul>
 
@@ -30,9 +32,13 @@ Each session should be tailored to the audience — from introductory overviews 
 
 </ul>
 
+</div>
 
 
-'2' <strong class="color-accent-text">Facilitation (during the session)</strong>
+
+<div class="step-section">
+
+<span class="step-number">2</span> <strong class="color-accent-text">Facilitation (during the session)</strong>
 
 <ul>
 
@@ -46,9 +52,13 @@ Each session should be tailored to the audience — from introductory overviews 
 
 </ul>
 
+</div>
 
 
-'3' <strong class="color-accent-text">Follow-up (after the session)</strong>
+
+<div class="step-section">
+
+<span class="step-number">3</span> <strong class="color-accent-text">Follow-up (after the session)</strong>
 
 <ul>
 
@@ -62,6 +72,8 @@ Each session should be tailored to the audience — from introductory overviews 
 
 </ul>
 
+</div>
+
 
 ## Contents
 
@@ -71,11 +83,14 @@ Each session should be tailored to the audience — from introductory overviews 
 | [READING_LIST](READING_LIST.html) (.Rmd / .html) | Dynamic, searchable bibliography of 65+ publications on LLM benchmarking and evaluation, with expandable abstracts and DOI links to original papers. | Display during the session as a live reference. Encourage participants to filter by author/title and explore papers relevant to their context. |
 | [worksheet](worksheet.docx) (.Rmd / .docx) | Workshop worksheet with blank tables for note-taking, scoring exercises, and group discussion prompts. | Print and distribute to participants at the start of the session. Editable DOCX can be adapted for different group sizes. |
 | [references.bib](references.bib) | BibTeX database of 65 references on LLM benchmarking, shared by the R Markdown materials. | Used automatically by the .Rmd files. Update or extend to customise the reading list for specific workshop topics. |
+{:.contents-table}
 
 
 *Source .Rmd files can be opened and rendered in RStudio. Pre-rendered HTML and DOCX outputs are provided for immediate use.*
+{:.info-box}
 
 
 > *For questions or contributions, contact Alan Berg.*
+{:.muted-text}
 
 
