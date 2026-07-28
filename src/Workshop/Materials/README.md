@@ -6,7 +6,28 @@ nav_order: 100
 
 # Workshop Materials — AI Alignment
 
-This directory contains materials designed to support workshops on AI Alignment, benchmarking, and the evaluation of AI systems against educational values. Materials are developed under the CEDA project and are intended for use by the Dutch Education community.
+This directory holds the materials we use to run workshops on AI alignment, benchmarking, and the evaluation of AI systems against educational values. The materials are produced under the CEDA project and aimed at the Dutch education community — from teachers and school leaders to data and policy professionals.
+
+A workshop is not a lecture. It is a structured session in which participants build a shared vocabulary for talking about AI quality, then apply that vocabulary to real benchmark data. The goal is practical literacy: by the end, participants should be able to read a model scorecard, question what a benchmark measures, and connect those numbers to decisions in their own educational context.
+
+## Who these workshops are for
+
+The materials adapt to three audiences, and most sessions mix at least two:
+
+- **Educators and school leaders** who need a working understanding of what AI benchmarks do and do not tell them about safe, fair use in classrooms.
+- **Policy and governance staff** who write procurement or adoption guidance and must judge vendor claims against evidence.
+- **Data and technical professionals** who want to reproduce, extend, or critique the underlying benchmarking pipeline.
+
+Facilitators should pick the depth that fits the room. An introductory session spends most of its time on framing and reflection; a technical session opens the R Markdown sources and walks through the data pipeline.
+
+## What participants take away
+
+Each session is built around four concrete outcomes:
+
+1. **A shared frame.** Participants can explain, in plain language, what AI alignment and benchmarking mean for education.
+2. **Hands-on reading.** Participants can interpret a live benchmark dashboard and name at least one metric's limitation.
+3. **A scoring habit.** Using the worksheet, participants practice turning observations into a structured scorecard rather than an impression.
+4. **A next step.** Each group leaves with one insight or open question worth pursuing after the session.
 
 ## Workshop Usage Guide
 
@@ -24,7 +45,7 @@ Each session should be tailored to the audience — from introductory overviews 
 
 <li>Review the materials listed in <a href="#contents">Contents</a> and select those relevant to your session and audience size (allow <strong>30 min</strong>).</li>
 
-<li>Familiarise yourself with the ***AI Alignment project*** context by reading the <a href="https://cedanl.github.io/AI-Alignment">project README</a> and the <a href="https://cedanl.github.io/AI-Alignment/Dashboard/info_benchmarks.html">information dashboard</a>.</li>
+<li>Familiarise yourself with the <strong>AI Alignment project</strong> context by reading the <a href="https://cedanl.github.io/AI-Alignment">project README</a> and the <a href="https://cedanl.github.io/AI-Alignment/Dashboard/info_benchmarks.html">information dashboard</a>.</li>
 
 <li>Prepare any technical setup: projector, printed handouts, live dashboard access. If using the live dashboards, test the URLs in advance.</li>
 
@@ -92,5 +113,3 @@ Each session should be tailored to the audience — from introductory overviews 
 
 > *For questions or contributions, contact Alan Berg.*
 {:.muted-text}
-
-
