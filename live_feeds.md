@@ -777,11 +777,6 @@ nav_order: 101
 })();
 </script>
 
-<p style="font-size: 0.85em; color: #5a6a7a; margin-top: 4px;">
-  The animation runs for five loops and then stops. Press the space bar to
-  restart or stop it.
-</p>
-
 - [Artificial Analysis](https://artificialanalysis.ai/) — Independent analysis
   of AI models and API providers. Publishes new model evaluations and
   methodology updates almost daily, plus the Intelligence Index, Coding Agent
