@@ -4,9 +4,6 @@ title: AI Alignment Scorecards
 nav_order: 1
 ---
 
-<div class="lang-box lang-nl">
-<span class="lang-label">Nederlands</span>
-
 ## Introductie
 
 Het **AI Alignment**-project binnen CEDA is een geleidelijk evoluerend werkterrein dat zich richt op het volgen en vergelijken van AI-modellen en -systemen met onze waarden.
@@ -32,10 +29,7 @@ Je kunt hier materialen vinden voor een community-workshop die zich richt op het
 
 1. [Workshopmaterialen](src/Workshop/Materials/README.html)
 
-</div>
 
-<div class="lang-box lang-en">
-<span class="lang-label">English</span>
 
 ## Introduction
 
@@ -62,5 +56,4 @@ You can find materials for a community workshop centered around discovering what
 
 1. [Workshop materials](src/Workshop/Materials/README.html)
 
-</div>
 
