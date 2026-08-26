@@ -1,5 +1,42 @@
 $color-accent: $link-color;
 
+.lang-box {
+  border-radius: 6px;
+  padding: 1.25em 1.5em;
+  margin: 1.5em 0;
+}
+
+.lang-label {
+  display: inline-block;
+  font-size: 0.75em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2em 0.7em;
+  border-radius: 3px;
+  margin-bottom: 0.75em;
+}
+
+.lang-nl {
+  border-left: 4px solid $color-accent;
+  background: #f4f0fa;
+}
+
+.lang-nl .lang-label {
+  background: $color-accent;
+  color: #fff;
+}
+
+.lang-en {
+  border-left: 4px solid #b8860b;
+  background: #faf6ea;
+}
+
+.lang-en .lang-label {
+  background: #b8860b;
+  color: #fff;
+}
+
 .info-box {
   border-left: 4px solid $color-accent;
   background: #f4f0fa;
