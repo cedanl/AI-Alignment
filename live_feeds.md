@@ -30,8 +30,7 @@ nav_order: 101
   labs, and talent development.
 
 > ⚠️ **Warning:**
-> Some Dutch news sites (e.g. Tweakers, NU.nl) are operated by DPG Media and
-> may require accepting cookies or may limit access to articles.
+> Some Dutch news sites and require accepting cookies or may limit access to articles.
 
 ## Government & EU Policy
 
@@ -39,28 +38,109 @@ nav_order: 101
   The Dutch ministry responsible for the digital economy and digital
   sovereignty, including AI policy. Publishes news, policy documents, and
   updates from the Staatssecretaris Digitale Economie en Soevereiniteit.
+  - [ICT — Informatie- en communicatietechnologie](https://www.rijksoverheid.nl/themas/economie/ict) —
+    The Rijksoverheid subject page carrying AI news and documents (e.g. the
+    international strategy for a safe and responsible AI transition).
+  - [ICT (English)](https://www.government.nl/themes/economy/ict) — English
+    counterpart of the ICT subject, incl. news, documents, and the
+    AI-transition strategy for international readers.
+  - [Gebruik van AI door Rijksoverheid](https://www.government.nl/service/use-of-ai) —
+    How the national government uses AI and its rules on responsible use.
+  - [Overheidsbrede visie generatieve AI (2024)](https://www.rijksoverheid.nl/documenten/2024/01/01/overheidsbrede-visie-generatieve-ai) —
+    The government-wide vision on generative AI describing opportunities and
+    risks, law and regulations, and policy.
+  - [Overheidsbrede handreiking voor de verantwoorde inzet van generatieve AI (2025)](https://www.rijksoverheid.nl/documenten/2025/04/16/overheidsbrede-handreiking-generatieve-ai) —
+    Practical guidance for government organisations on responsible use of
+    generative AI.
 - [Autoriteit Persoonsgegevens (AP)](https://www.autoriteitpersoonsgegevens.nl/) —
   The Dutch data protection authority. Treats AI as a priority theme, setting
   frameworks for AI use, publishing guidance on generative AI and the AVG,
   and enforcing AI-related privacy rules (e.g. the FRIA for AI systems).
+  - [Algoritmes & AI](https://www.autoriteitpersoonsgegevens.nl/themas/algoritmes-ai) —
+    The central AP hub on algorithms and AI with its themes and news.
+  - [AI-verordening](https://www.autoriteitpersoonsgegevens.nl/themas/algoritmes-ai/ai-verordening) —
+    AP guidance on the EU AI Act (AI Act) and its obligations for
+    organisations.
+  - [Generatieve AI](https://www.autoriteitpersoonsgegevens.nl/themas/algoritmes-ai/algoritmes-uitgelegd/generatieve-ai) —
+    Explanation of generative AI and its privacy implications.
+  - [Verantwoord vooruit: AP-visie op generatieve AI](https://www.autoriteitpersoonsgegevens.nl/documenten/verantwoord-vooruit-ap-visie-op-generatieve-ai) —
+    The AP's vision on how generative AI can be deployed safely and
+    responsibly.
+  - [Handreiking generatieve AI en de AVG](https://www.autoriteitpersoonsgegevens.nl/documenten/handreiking-generatieve-ai-en-de-avg) —
+    The AP's guidelines on generative AI under the GDPR (AVG).
+  - [FRIA voor AI-systemen](https://www.autoriteitpersoonsgegevens.nl/actueel/de-fria-voor-ai-systemen-komt-eraan-berei-u-voor) —
+    News on the upcoming Data Protection Impact Assessment (FRIA) for AI
+    systems (Aug 2026).
 - [AI Coalitie 4 NL (AIC4NL)](https://nlaic.com/nieuws) — The Dutch AI
   coalition for responsible AI, bridging government, industry, and research.
   Publishes news on AI policy, the national AI agenda, and the Nederlandse AI
   Fabriek (see also Dutch Sources above).
+  - [Nieuws](https://nlaic.com/nieuws) — News on AI policy, the national AI
+    agenda, and the Nederlandse AI Fabriek.
+  - [Nederlandse AI Fabriek](https://aic4nl.nl/over-ons/nederlandse-ai-fabriek/) —
+    The Dutch national AI Factory within the European EuroHPC network.
+  - [Position Papers](https://aic4nl.nl/over-ons/position-papers/) — AIC4NL's
+    position papers on responsible AI and AI policy.
+  - [Verantwoord omgaan met AI](https://aic4nl.nl/onze-ondersteuning/verantwoord-omgaan-met-ai/) —
+    Support for organisations in using AI responsibly.
+  - [Werkgebieden](https://aic4nl.nl/community/werkgebieden/) — AIC4NL's
+    work areas where AI is applied in specific sectors.
 - [European Commission — Artificial Intelligence](https://digital-strategy.ec.europa.eu/en/policies/artificial-intelligence) —
   The EU's AI policy hub, covering the AI Continent action plan, the Apply AI
   Strategy, AI Factories, and the European approach to trustworthy AI.
+  - [European approach to AI](https://digital-strategy.ec.europa.eu/en/policies/european-approach-artificial-intelligence) —
+    The EU's approach to AI: excellence and trust in research, industry, and
+    fundamental rights.
+  - [Apply AI Strategy](https://digital-strategy.ec.europa.eu/en/policies/apply-ai) —
+    The EU's AI adoption strategy for strategic sectors (SMEs, industry,
+    public sector).
+  - [AI Continent action plan](https://digital-strategy.ec.europa.eu/en/library/ai-continent-action-plan) —
+    The April 2025 action plan to make Europe the AI continent.
+  - [Enforcement of the AI Act](https://digital-strategy.ec.europa.eu/en/policies/enforcement-ai-act) —
+    How the AI Act is enforced from 2 August 2026 by the AI Office and
+    national authorities.
 - [European AI Office](https://digital-strategy.ec.europa.eu/en/policies/ai-office) —
   The European Commission body that implements and enforces the AI Act,
   oversees general-purpose AI models, and coordinates the AI Board, Scientific
   Panel, and Advisory Forum.
+  - [AI Board](https://digital-strategy.ec.europa.eu/en/policies/ai-board) —
+    The European Artificial Intelligence Board coordinating national
+    authorities.
+  - [Scientific Panel](https://digital-strategy.ec.europa.eu/en/policies/ai-scientific-panel) —
+    The independent scientific advisory body to the AI Office.
+  - [Advisory Forum](https://digital-strategy.ec.europa.eu/en/policies/ai-advisory-forum) —
+    The multi-stakeholder advisory body (industry, academia, civil society).
+  - [AI Pact](https://digital-strategy.ec.europa.eu/en/policies/ai-pact) —
+    Voluntary initiative for businesses to prepare for the AI Act.
+  - [General-purpose AI (GPAI) guidelines](https://digital-strategy.ec.europa.eu/en/policies/guidelines-gpai-providers) —
+    Guidance for providers of general-purpose AI models.
+  - [GenAI4EU](https://digital-strategy.ec.europa.eu/en/policies/genai4eu) —
+    Initiative for generative-AI use cases in 14 industrial sectors and the
+    public sector.
 - [AI Act](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai) —
   The first comprehensive legal framework on AI worldwide. Explains the
   risk-based rules, the application timeline, and enforcement from 2 August
   2026.
+  - [GPAI Code of Practice](https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai) —
+    The voluntary Code of Practice for general-purpose AI models under the AI
+    Act.
+  - [Governance and enforcement of the AI Act](https://digital-strategy.ec.europa.eu/en/policies/ai-act-governance-and-enforcement) —
+    The AI Act's governance architecture and its enforcement framework.
+  - [AI Act Service Desk](https://ai-act-service-desk.ec.europa.eu/en) —
+    Single information platform for questions about the AI Act.
+  - [Code of Practice on AI-generated content](https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content) —
+    Voluntary rules on marking and labelling of AI-generated content.
 - [European Parliament — Artificial Intelligence](https://www.europarl.europa.eu/topics/en/article/20200827STO85804/artificial-intelligence-in-the-eu) —
   The European Parliament's topic page on AI, covering how AI is used, its
   opportunities and threats, and how MEPs shape AI legislation.
+  - [Artificial intelligence](https://www.europarl.europa.eu/topics/en/topic/artificial-intelligence) —
+    The Parliament's AI topic hub with articles and legislative dossiers.
+  - [Artificial intelligence: threats and opportunities](https://www.europarl.europa.eu/topics/en/article/20200918STO87404/artificial-intelligence-threats-and-opportunities) —
+    Explainer on the risks and benefits of AI.
+  - [EU AI Act: first regulation on artificial intelligence](https://www.europarl.europa.eu/news/en/headlines/society/20230601STO93804/eu-ai-act-first-regulation-on-artificial-intelligence) —
+    The Parliament's explainer on the AI Act.
+  - [AI rules: what the European Parliament wants](https://www.europarl.europa.eu/news/en/headlines/priorities/artificial-intelligence-in-the-eu/20201015STO89417/ai-rules-what-the-european-parliament-wants) —
+    Overview of the Parliament's position on AI rules.
 
 ## Economic Data
 
@@ -790,7 +870,7 @@ nav_order: 101
   standard benchmarks.
 - [Epoch AI](https://epoch.ai/) — Research institute tracking the trajectory of
   AI. Maintains the Epoch Capabilities Index, benchmark data, and data
-  explorers on models, compute, and data centers. Data is refreshed
+  explorers on models, compute, and data centers. Data is refreshed 
   continuously (e.g. AI Capabilities updated Aug 25, 2026).
 
 ## Research Feeds
