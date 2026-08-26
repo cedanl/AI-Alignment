@@ -148,20 +148,70 @@ nav_order: 101
   The EU's statistical office. Publishes data on R&D expenditure, innovation,
   the digital economy, and ICT usage by enterprises and households, including
   AI-related indicators.
+  - [Use of artificial intelligence in enterprises](https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Use_of_artificial_intelligence_in_enterprises) —
+    Statistics Explained article (data extracted Dec 2025): 19.95% of EU
+    enterprises used AI in 2025, broken down by size class, economic activity,
+    type of AI technology, and purpose.
+  - [Artificial intelligence by size class of enterprise](https://ec.europa.eu/eurostat/databrowser/view/isoc_eb_ai/default/table?lang=en) —
+    Dataset `isoc_eb_ai`: AI usage by enterprise size (small, medium, large).
+  - [Artificial intelligence by NACE Rev.2 activity](https://ec.europa.eu/eurostat/databrowser/view/isoc_eb_ain2/default/table?lang=en) —
+    Dataset `isoc_eb_ain2`: AI usage by economic sector.
+  - [Digital economy and society — database](https://ec.europa.eu/eurostat/web/digital-economy-and-society/database) —
+    All Eurostat digitalisation datasets, including AI indicators.
+  - [Digitalisation dashboard](https://ec.europa.eu/eurostat/cache/dashboard/digitalisation/) —
+    Interactive dashboard of digital-transformation indicators by country.
 - [CBS — Onderzoek en innovatie](https://www.cbs.nl/nl-nl/over-ons/innovatie) —
   Statistics Netherlands' research and innovation pages, including a position
   paper on artificial intelligence and dashboards on skills demand in online
   vacancies.
+  - [Kunstmatige intelligentie (AI)](https://www.cbs.nl/nl-nl/dossier/dossier-digitalisering-kenniseconomie-en-ai/kunstmatige-intelligentie--ai--) —
+    The CBS dossier hub gathering all figures, articles, and reports on AI,
+    organised by theme (Bedrijven en economie, Werk en onderwijs, etc.).
+  - [Gebruik kunstmatige intelligentie (AI) door bedrijven neemt toe](https://www.cbs.nl/nl-nl/nieuws/2025/09/gebruik-kunstmatige-intelligentie--ai---door-bedrijven-neemt-toe) —
+    News (Feb 2025): 22.7% of companies with 10+ staff used AI in 2024, up
+    almost 9 percentage points from 2023.
+  - [AI in de samenleving: ervaringen en opinies](https://www.cbs.nl/nl-nl/publicatie/2026/08/ai-in-de-samenleving-ervaringen-en-opinies) —
+    Report (2026) on citizens' experiences with and opinions on AI in daily
+    life, the labour market, and healthcare.
+  - [Bijna kwart Nederlanders gebruikt kunstmatige intelligentie zoals ChatGPT](https://www.cbs.nl/nl-nl/nieuws/2024/36/bijna-kwart-nederlanders-gebruikt-kunstmatige-intelligentie-zoals-chatgpt) —
+    News (Sep 2024): 23% of the population aged 12+ used AI to create texts,
+    videos, or images.
 - [CBS StatLine](https://www.cbs.nl/nl-nl/cijfers) — The Dutch statistics
   database with detailed tables on the economy, labour, and digital society,
   updated on a regular schedule.
+  - [ICT-gebruik bij bedrijven; bedrijfstak en bedrijfsgrootte, 2025](https://www.cbs.nl/nl-nl/cijfers/detail/86119NED) —
+    StatLine table `86119NED` including artificiële intelligentie as an ICT
+    metric, by sector and company size.
+  - [ICT-gebruik bij kleine bedrijven; bedrijfstak en bedrijfsgrootte, 2025](https://www.cbs.nl/nl-nl/cijfers/detail/86116NED) —
+    StatLine table `86116NED` on AI and other ICT use by small companies.
 - [European Commission — AI Factories](https://digital-strategy.ec.europa.eu/en/policies/ai-factories) —
   EU investment in AI computing infrastructure via the EuroHPC Joint
   Undertaking, including the Dutch AI Factory (NLAIF). Over €10 billion in
   supercomputing and AI Factory investment for 2021-2027.
+  - [Netherlands — Dutch AI Factory (NLAIF)](https://www.eurohpc-ju.europa.eu/netherlands_en) —
+    The EuroHPC JU page on NLAIF, a consortium of SURF, TNO, and AIC4NL
+    focusing on sensitive-data AI in health, mobility, finance, and
+    agriculture.
+  - [EuroHPC AI Factories](https://eurohpc-ju.europa.eu/ai-factories_en) —
+    All 19 AI Factories and 13 Antennas across Europe, with access calls.
+  - [EU launches AI Gigafactories call](https://digital-strategy.ec.europa.eu/en/news/eu-launches-ai-gigafactories-call-boost-europes-computing-capacity-and-unlock-more-eu30-billion) —
+    Press release (Jul 2026): call to establish up to seven AI Gigafactories
+    unlocking over €30 billion in investment.
 - [Epoch AI](https://epoch.ai/) — Independent research on the economics of AI,
   tracking compute, chip sales, data centers, and model training costs (see
   also Benchmark Trackers above).
+  - [Data on the Trajectory of AI](https://epoch.ai/data) — Public datasets on
+    models, data centers, chip sales, companies, GPU clusters, and ML
+    hardware, all free to reuse under CC-BY.
+  - [AI Models](https://epoch.ai/data/ai-models) — Database of 3500+ ML models
+    from 1950 to today (updated Aug 25, 2026).
+  - [AI Data Centers](https://epoch.ai/data/ai-data-centers) — Satellite- and
+    permit-based estimates of compute, power use, and build timelines.
+  - [AI Chip Sales](https://epoch.ai/data/ai-chip-sales) — Estimates of
+    compute, power usage, and spending by AI chip (updated Aug 11, 2026).
+  - [Trends in Artificial Intelligence](https://epoch.ai/trends) — Dashboard
+    (updated Feb 2026): training compute growing 5×/year, chip performance
+    per dollar +49%/year, compute stock 3.4×/year.
 
 ## Benchmark Trackers
 
