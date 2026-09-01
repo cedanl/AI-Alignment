@@ -14,5 +14,20 @@ nav_order: 1000
 
 ## Technology
 
-The open source coding agent [Opencode](https://opencode.ai/) was used extensively to reduce development effort and bring the product to market efficiently. For cost savings, the currently used LLM model is `DeepSeek V4 Flash` — available as open weights that can be deployed without restriction to your own data center.
+The open source coding agent [Opencode](https://opencode.ai/) was used extensively to reduce development effort around creating a corpus of evidence. The currently used LLM model is `GLM 5.3 Flash` (Z.ai) — available as open weights that can be deployed without restriction to your own data center.
+
+Opencode is extended with MCP (Model Context Protocol) servers for research tooling:
+
+| Server | Purpose |
+|---|---|
+| [arxiv](https://arxiv.org) | Search, download, and read arXiv papers |
+| [Semantic Scholar](https://semanticscholar.org) | Paper search and citation graphs |
+| [OpenAlex](https://openalex.org) | Scholarly works, authors, and citation analytics |
+| [PubMed](https://pubmed.ncbi.nlm.nih.gov) | Biomedical literature search and full text (incl. Europe PMC) |
+| [DuckDuckGo](https://duckduckgo.com) | Web search |
+| [MarkItDown](https://github.com/microsoft/markitdown) | Convert documents (web, Office, PDF) to markdown |
+| [Playwright](https://playwright.dev) | Browser automation |
+| GitHub | GitHub MCP integration |
+| R / MCPR | Live R session for statistics and plotting |
+| math | Math evaluation, statistics, and plotting |
 
