@@ -6,7 +6,7 @@ nav_order: 100
 
 <div class="info-box">
 
-<strong>Scope.</strong> This page makes the case for placing an LLM router in front of an NL Education chat interface — lowering cost while enforcing our community values — and treats the router as a shared community practice. Examples were found via web search on 15-09-2026.
+<strong>Scope.</strong> This page makes the case for placing an LLM router in front of NL Education chat interfaces — lowering cost, later enforcing our community values — and treats the router as a shared community practice. Examples were found via web search on 15-09-2026.
 
 </div>
 
@@ -167,7 +167,7 @@ This is a potential path, not a recommendation — here is a starting point for 
 
 # Final thoughts
 
-What is our definition of scale? Out of the box LLM routers can push down costs. However, have we got enough usage to extract all the value? There is a lot of gold to pick up off the ground, but that requires experience, dedication, time and hours. We can nudge users to help them learn the best ways to communicate with the LLMs, mitigate bad behaviour, generate benchmarks, and improve smaller cheaper models to perform better for NL Education — one step up the ladder of complexity at a time.
+What is our definition of scale? Out of the box LLM routers can push down costs. However, have we got enough usage to extract all the value? There is a lot of gold to pick up off the ground, but that requires experience, dedication, time and hours. We can nudge users to help them learn the best ways to communicate with the LLMs, mitigate bad behaviour, support AI alignment to our values, generate benchmarks, and improve smaller cheaper models to perform better for NL Education — one step up the ladder of complexity at a time.
 
 # Further reading
 
