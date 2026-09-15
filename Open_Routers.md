@@ -6,7 +6,7 @@ nav_order: 100
 
 <div class="info-box">
 
-<strong>Scope.</strong> This page makes the case for placing an LLM router in front of NL Education chat interfaces — lowering cost, later enforcing our community values — and treats the router as a shared community practice. Examples were found via web search on 15-09-2026.
+<strong>Scope.</strong> This page makes the case for placing an LLM router in front of NL Education chat interfaces such as the [eduGenAI](https://npuls.nl/edugenai) pilot — lowering cost, and if scaled, later enforcing our community values — and treats the router as a shared community practice. Examples were found via web search on 15-09-2026.
 
 </div>
 
@@ -20,7 +20,7 @@ This page makes the case for adding an LLM router in front of our chat interface
 
 What the router enforces is the community scorecard. Those rules encode how we, as an educational community, judge models — which ones are accurate, which are safe, which keep data at home — and they cannot be written once and left alone. New frontier models appear faster than any hand-maintained ruleset can follow, so the rules need the same thing any community practice needs: regular review, honest challenge, and updates as our shared understanding of our values evolves. The maintenance cost of the rules is not overhead; it is the governance itself, and it is work we should share openly rather than centralise.
 
-The practical path is deliberately modest: start with an out-of-the-box commercial router — or, for the Dutch education sector, the [eduGenAI](https://npuls.nl/edugenai) pilot, where institutions can already choose which models to use and where data sovereignty is a design goal — nudge users towards better habits, collect feedback that improves smaller cheaper models, and generate our own benchmarks from real NL Education use — one step up the ladder of complexity at a time. The technology is the easy half. The community practice around the scorecard is the half that decides whether the router serves our values.
+The practical path is deliberately modest: start with an out-of-the-box commercial router — or, for the Dutch education sector, the [eduGenAI](https://npuls.nl/edugenai) pilot, where institutions can already choose which models to use and where data sovereignty is a design goal — nudge users towards better habits, collect feedback that improves smaller cheaper models, and generate our own benchmarks from real NL Education use — one step up the ladder of complexity at a time. The technology requires expertise. The community practice around the scorecard is the half to the equation that decides whether the router serves our values.
 
 # Context
 
@@ -155,7 +155,7 @@ This is a potential path, not a recommendation — here is a starting point for 
 
 <div class="step-section">
 
-<span class="step-number">2</span> <strong class="color-accent-text">Move to a self-hosted gateway.</strong> Once the rules are understood, move to **LiteLLM** as a self-hosted gateway and express your scorecard rules as guardrails and custom routing strategies.
+<span class="step-number">2</span> <strong class="color-accent-text">Move to a self-hosted gateway.</strong> Once the rules are understood, move to LiteLLM as a self-hosted gateway and express your scorecard rules as guardrails and custom routing strategies.
 
 </div>
 
