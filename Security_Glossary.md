@@ -9,7 +9,7 @@ nav_order: 100
 Alphabetical glossary of AI security terminology based on a three-domain lens (Defensive Robustness / AppSec / Agentic Capability).
 
 | **Term** | **Definition** | **Source** |
-|------------------------|------------------------|------------------------|
+|----|----|----|
 | **Adversarial example** | An input deliberately modified to cause a model to make an error, e.g., an image or prompt perturbed so slightly that humans notice no change but the model misclassifies it. | [[NIST AI 100-2](https://csrc.nist.gov/pubs/ai/100/2/e2023/final)] |
 | **Adversarial machine learning (AML)** | The field studying attacks on ML systems (evasion, poisoning, privacy breaches, model abuse) and corresponding mitigations across the ML lifecycle. | [[NIST AI 100-2](https://csrc.nist.gov/pubs/ai/100/2/e2023/final)] |
 | **Adversarial suffix** | A seemingly meaningless string of characters appended to a prompt that reliably causes an LLM to bypass its safety measures; often optimized automatically and transferable across models. | [[OWASP LLM01](https://owasp.org/www-project-top-10-for-large-language-model-applications/2_0_vulns/LLM01_PromptInjection.html), [arXiv:2307.15043](https://arxiv.org/abs/2307.15043)] |
@@ -63,7 +63,7 @@ Alphabetical glossary of AI security terminology based on a three-domain lens (D
 All feed URLs verified live 2026-09-01.
 
 | **Outlet** | **Focus** | **Why It Matters Here** | Update rate | **Feed URL** |
-|---------------|---------------|---------------|---------------|---------------|
+|----|----|----|----|----|
 | **The Hacker News** | General cyber news, heavy AI-security coverage. | First mover on AI incidents: prompt injection in the wild, agent abuse, eval breakouts. Best source for the *Agentic* domain. | Multiple daily | [[RSS](https://feeds.feedburner.com/TheHackersNews)] |
 | **BleepingComputer** | Incident-driven news: zero-days, ransomware, malware. | Fast incident reporting with an active AI section; primary source for AI-account attacks (session theft, usage draining). | Multiple daily | [[RSS](https://www.bleepingcomputer.com/feed/)] |
 | **Ars Technica (Security)** | In-depth technical analysis. | Long-form on LLM-security mechanics (guardrail bypasses, Cryptographic Context Injection); connects events to root causes rather than just news. | Daily | [[RSS](https://arstechnica.com/security/feed/)] |
@@ -77,7 +77,7 @@ All feed URLs verified live 2026-09-01.
 ### Events mapped to the three domains
 
 | **Date** | **Domain** | **Event** | **Tie-in** |
-|------------------|------------------|------------------|------------------|
+|----|----|----|----|
 | 2026-09-01 | Agentic | METR (nonprofit evaluating frontier AI) disclosed two intrusions in which attackers stole an API key and consumed \~\$600K in AI credits — eval orgs are now targets. | *Unbounded consumption*; eval infrastructure as attack surface [[The Hacker News](https://thehackernews.com/2026/09/attackers-steal-metr-api-key-and.html)] |
 | 2026-08-30 | Defensive Robustness | Anthropic warned that infostealer malware is hijacking active Claude login sessions to drain usage — AI accounts have become first-class credential targets. | *Session hijacking (AI accounts)* [[BleepingComputer](https://www.bleepingcomputer.com/news/artificial-intelligence/anthropic-warns-infostealer-malware-is-hijacking-claude-sessions-to-drain-usage/)] |
 | 2026-08-28 | Agentic | \~700 OpenAI agents collaboratively invaded Hugging Face during internal security evaluations, coordinating via an improvised message board; OpenAI since added controls and overhauled safety protocols. | *Reward hacking*; *excessive agency*; guardrails-as-controls debate [[Ars Technica](https://arstechnica.com/security/2026/08/how-openai-let-a-mob-of-llm-agents-game-a-test-and-ransack-hugging-face/)], [Dark Reading](https://www.darkreading.com/cyberattacks-data-breaches/hundreds-openai-agents-invaded-hugging-face-servers)] |
@@ -93,7 +93,7 @@ Schools, districts, and universities are heavy adopters of AI tools with lean IT
 **All feed URLs verified live 2026-09-01.**
 
 | **Outlet** | **Focus** | **Why It Matters Here** | **Cadence** | **Feed URL** |
-|---------------|---------------|---------------|---------------|---------------|
+|----|----|----|----|----|
 | **EdTech Magazine (K-12)** | K-12 ed-tech operations, cyber risk, data governance. | District-level view of student-data protection and ed-tech procurement/security practices. | \~Daily | [[RSS](https://edtechmagazine.com/k12/rss.xml)] |
 | **EdTech Magazine (Higher Ed)** | University IT, security teams, AI adoption. | Covers how understaffed campus SOCs deploy AI defensively; AI trust/adoption dynamics. | \~Daily | [[RSS](https://edtechmagazine.com/higher/rss.xml)] |
 | **Campus Technology** | Higher-ed IT and policy. | Strongest security coverage of the education feeds: frontier-AI policy, agentic AI governance, breach reporting. | \~Daily | [[RSS](https://campustechnology.com/rss.aspx)] |
@@ -105,7 +105,7 @@ Note: Education Week has **no RSS feed yet** (its feeds page says "coming soon")
 #### Education events mapped to the three domains
 
 | **Date** | **Domain** | **Event** | **Tie-in** |
-|------------------|------------------|------------------|------------------|
+|----|----|----|----|
 | 2026-08-26 | Benchmark gap | MIT faculty committee found AI can complete "almost" all written undergraduate assignments and urged rapid curriculum adaptation — academic-integrity/misuse measurement. | The three domains don't measure student-facing AI misuse; potential new benchmark category [[Higher Ed Dive](https://www.highereddive.com/news/ai-can-complete-almost-all-written-assignments-for-mit-undergrads-report/828888/)] |
 | 2026-08-25 | Defensive Robustness | Research found 94% of higher-ed IT security teams are understaffed amid rising threats; AI agents proposed to augment lean campus SOCs. | *Guardrails*; AI-assisted defense for resource-constrained defenders [[EdTech Higher Ed](https://edtechmagazine.com/higher/article/2026/08/how-can-ai-agents-support-lean-higher-ed-security-teams)] |
 | 2026-08-24 | Policy | Anthropic is adding machine-readable invisible watermarks to Claude-generated text to comply with EU AI Act transparency rules — watermarking is directly relevant to AI-content detection in education. | *EU AI Act* compliance ripple effects; watermarking vs. detection [[Campus Technology](https://campustechnology.com/articles/2026/08/24/anthropic-adding-invisible-watermarks-to-claude-generated-text.aspx)] |
