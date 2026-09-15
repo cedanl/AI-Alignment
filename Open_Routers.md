@@ -6,7 +6,7 @@ nav_order: 100
 
 <div class="info-box">
 
-<strong>Scope.</strong> This page makes the case for placing an LLM router in front of NL Education chat interfaces such as the [eduGenAI](https://npuls.nl/edugenai) pilot — lowering cost, and if scaled, later enforcing our community values — and treats the router as a shared community practice. Examples were found via web search on 15-09-2026.
+<strong>Scope.</strong> This page makes the case for placing an LLM router in front of NL Education chat interfaces such as the eduGenAI pilot - https://npuls.nl/edugenai  — lowering cost, and if scaled, later enforcing our community values — and treats the router as a shared community practice. Examples were found via web search on 15-09-2026.
 
 </div>
 
