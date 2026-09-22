@@ -80,7 +80,7 @@ The stack is defined by three files at the repository root. The official LiteLLM
 | File | Purpose |
 |------------------------------------|------------------------------------|
 | [`docker-compose.yml`](./docker/docker-compose.yml) | Declares the three containers — the `litellm` proxy (publishes `localhost:4000`, sets `extra_hosts` so it can reach Ollama on the host) plus the `presidio-analyzer` and `presidio-anonymizer` sidecars for PII detection and redaction. Mounts the two files below into the proxy at `/app`. |
-| [`config.yaml`](./docker/config.yam) | LiteLLM config. `model_list` maps the two aliases the callback routes to (`ollama-gpt` → `gpt-oss:20b`, `ollama-qwen` → `qwen3.5:2b`) onto a local Ollama at `http://host.docker.internal:11434`; `litellm_settings.callbacks` registers the routing callback. |
+| [`config.yaml`](./docker/config.yaml) | LiteLLM config. `model_list` maps the two aliases the callback routes to (`ollama-gpt` → `gpt-oss:20b`, `ollama-qwen` → `qwen3.5:2b`) onto a local Ollama at `http://host.docker.internal:11434`; `litellm_settings.callbacks` registers the routing callback. |
 | [`custom_callbacks.py`](./docker/custom_callbacks.py) | The routing logic described above — PII blocking, canned keyword replies, metric-based model selection. Mounted into the proxy and imported as `custom_callbacks.custom_router`. |
 
 ### 1. Install Ollama
