@@ -1,0 +1,27 @@
+services:
+  litellm:
+    image: ghcr.io/berriai/litellm:main-latest
+    container_name: litellm_proxy
+    ports:
+      - "4000:4000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./config.yaml:/app/config.yaml
+      - ./custom_callbacks.py:/app/custom_callbacks.py
+    restart: unless-stopped
+    depends_on:
+      - presidio-analyzer
+      - presidio-anonymizer
+    command: ["--config", "/app/config.yaml"]
+
+  presidio-analyzer:
+    image: mcr.microsoft.com/presidio-analyzer:latest
+    container_name: presidio_analyzer
+    restart: unless-stopped
+
+  presidio-anonymizer:
+    image: mcr.microsoft.com/presidio-anonymizer:latest
+    container_name: presidio_anonymizer
+    restart: unless-stopped
+

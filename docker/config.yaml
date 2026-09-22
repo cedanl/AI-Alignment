@@ -1,0 +1,17 @@
+model_list:
+  - model_name: ollama-gpt
+    litellm_params:
+      model: ollama/gpt-oss:20b
+      api_base: http://host.docker.internal:11434
+  - model_name: ollama-qwen
+    litellm_params:
+      model: ollama/qwen3.5:2b
+      api_base: http://host.docker.internal:11434
+      
+general_settings:
+  trusted_proxy_ranges: []
+
+litellm_settings:
+  callbacks: ["custom_callbacks.custom_router"]
+  set_verbose: false
+  telemetry: false
