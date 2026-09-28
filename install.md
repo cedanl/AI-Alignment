@@ -14,6 +14,8 @@ It is deliberately simple: one proxy, one callback file, a handful of readable r
 
 ***Code written:*** 22-09-2026 Disclaimer: This code is intended for educational and demonstration purposes only. It is provided "as-is"
 
+* [Presentation](./Presentations/LITELLM_presentation.html)
+
 ## Motivation
 
 There are two reasons this exists, and they reinforce each other.
