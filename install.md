@@ -15,6 +15,8 @@ It is deliberately simple: one proxy, one callback file, a handful of readable r
 ***Code written:*** 22-09-2026 Disclaimer: This code is intended for educational and demonstration purposes only. It is provided "as-is"
 
 * [Presentation](./Presentations/LITELLM_presentation.html)
+* [Second Demonstration](./docker/Demo_two/details.html) based on routing based on community values stored in a CSV file.
+    * [Files](./docker/Demo_two/)
 
 ## Motivation
 
