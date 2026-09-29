@@ -16,7 +16,12 @@ It is deliberately simple: one proxy, one callback file, a handful of readable r
 
 * [Presentation](./Presentations/LITELLM_presentation.html)
 * [Second Demonstration](./docker/Demo_two/details.html) based on routing based on community values stored in a CSV file.
-    * [Files](./docker/Demo_two/)
+    * [custom_callbacks.py](./docker/Demo_two/custom_callbacks.py) Routing rules
+    * [docker-compose.yml](./docker/Demo_two/docker-compose.yml) Recipe for docker
+    * [llm_community_values_synthetic.R](./docker/Demo_two/llm_community_values_synthetic.R) Synthetic routing rule generator
+    * [Output from synthetic rule generator](./docker/Demo_two/llm_performance_community_values.csv)
+    * [ping.R](./docker/Demo_two/ping.R) Test for routing rules
+
 
 ## Motivation
 
